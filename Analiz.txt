@@ -1,2 +1,0 @@
-Konu: Banka
-Veri Tabanı: SQL
