@@ -1,9 +1,10 @@
 import './App.css'
 
 function App() {
+  const mert = "Götünü Sikeyim Mert Çalışkan"
   return (
     <>
-      <div className="">Hello, World!</div>
+      <div className="">{mert}</div>
     </>
   )
 }
