@@ -1,10 +1,10 @@
 import './App.css'
 
 function App() {
-  const mert = "Götünü Sikeyim Mert Çalışkan"
+  const mali = "ANNEN KENDİNİ ASTI AAAĞAĞHĞAĞHĞAHĞAĞ"
   return (
     <>
-      <div className="">{mert}</div>
+      <div className="">{mali}</div>
     </>
   )
 }
