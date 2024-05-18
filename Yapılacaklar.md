@@ -23,7 +23,7 @@
     - Randevu yönetimi için
 
 ***Veri tabanı***
-    - Randevu başlangıç ve bitiş saati ekle
+- Randevu başlangıç ve bitiş saati ekle
 
 ## Frontend
 - Dizayn
