@@ -17,9 +17,14 @@
 - Planları ekle
 - Kullanıcılara plan ekle
 
-- EventController.java oluştur.
+- EventController.java oluştur
     - Randevu yönetimi için
 
 ## Frontend
 - Dizayn
-- Takvim
+- Backend ile frontendi bağla
+- EventModal 
+    - Renk bugunu düzelt
+    - Tüm gün veya saatlik randevu oluşturma
+    - HandleSubmit fonksiyonunu tamamla
+    - Backende post ve put (patch) request yolla
