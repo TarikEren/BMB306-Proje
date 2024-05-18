@@ -22,6 +22,9 @@
 - EventController.java oluştur
     - Randevu yönetimi için
 
+***Veri tabanı***
+    - Randevu başlangıç ve bitiş saati ekle
+
 ## Frontend
 - Dizayn
 
@@ -32,5 +35,6 @@
     - Tüm gün veya saatlik randevu oluşturma
     - HandleSubmit fonksiyonunu tamamla
     - Backende post ve put (patch) request yolla
+    - Description kısmı ekle
 - Label kısmını ekle
 - Sürükle bırak
