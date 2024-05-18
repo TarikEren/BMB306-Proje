@@ -1,5 +1,5 @@
 //Modules
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import axios from "axios";
 
@@ -10,12 +10,11 @@ const router = createBrowserRouter([
         path: "/",
         element: <Index />
     }
-])
+]);
 function App() {
-
     return (
         <RouterProvider router={router}/>
-    )
+    );
 }
 
-export default App
+export default App;
