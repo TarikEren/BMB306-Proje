@@ -11,6 +11,8 @@ import About from './pages/About';
 import Account from './pages/Account';
 import Payment from './pages/Payment';
 import Plans from './pages/Plans';
+import Calendar from './pages/Calendar';
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -39,6 +41,10 @@ const router = createBrowserRouter([
     {
         path: "/plans",
         element: <Plans/>
+    },
+    {
+        path: "/calendar",
+        element: <Calendar/>
     }
 ]);
 function App() {
