@@ -19,6 +19,9 @@ public class AdminController {
         return userRepository.findAll();
     }
 
+    //Tek kullanıcı al (Kullanıcı planı değiştirmek için)
+
+    
     @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable Long id) {
         userRepository.deleteById(id);

@@ -21,6 +21,7 @@ public class UserController {
     public User updateUserDetails(@PathVariable Long id, @RequestBody User userDetails) {
         User user = userRepository.findById(id).orElse(null);
         if (user != null) {
+            //Yeni kullanıcı adı daha önceden alınmadıysa değiştir
             user.setUsername(userDetails.getUsername());
             user.setPassword(userDetails.getPassword());
             user.setAccountType(userDetails.getAccountType());

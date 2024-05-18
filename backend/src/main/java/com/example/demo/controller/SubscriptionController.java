@@ -9,6 +9,7 @@ public class SubscriptionController {
     @GetMapping
     public String getSubscriptionPlans() {
         // sub planları burda
+        // Premium ve beleş
         return "List of subscription plans";
     }
 

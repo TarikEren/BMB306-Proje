@@ -20,6 +20,9 @@ public class AuthController {
     @PostMapping("/login")
     public String loginUser(@RequestBody User user) {
         // BURAYA LOGİN LOGİC KOYMANIZ LAZIM
+        // Gelen formu kontrol et.
+        // Girdiler doğruysa (Eksik girdi) veritabanından kullanıcı adını ve şifreyi kontrol et.
+        // Aynı anda ikisini de içeren hesap varsa giriş yap.
         return "Login successful";
     }
 }
