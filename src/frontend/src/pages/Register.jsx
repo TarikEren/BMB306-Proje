@@ -1,8 +1,12 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
 
 function Register() {
   return (
-    <div>Register</div>
+    <React.Fragment>
+      <Navbar/>
+      <div>Register</div>
+    </React.Fragment>
   );
 }
 

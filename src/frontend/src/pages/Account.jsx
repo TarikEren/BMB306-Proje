@@ -1,8 +1,12 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
 
 function Account() {
   return (
-    <div>Account</div>
+    <React.Fragment>
+      <Navbar/>
+      <div>Account</div>
+    </React.Fragment>
   );
 }
 
