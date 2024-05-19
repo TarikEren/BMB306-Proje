@@ -12,6 +12,7 @@ import Account from './pages/Account';
 import Payment from './pages/Payment';
 import Plans from './pages/Plans';
 import Calendar from './pages/Calendar';
+import Admin from "./pages/Admin";
 
 const router = createBrowserRouter([
     {
@@ -20,36 +21,40 @@ const router = createBrowserRouter([
     },
     {
         path: "/login",
-        element: <Login/>
+        element: <Login />
     },
     {
         path: "/register",
-        element: <Register/>
+        element: <Register />
     },
     {
         path: "/about",
-        element: <About/>
+        element: <About />
     },
     {
         path: "/account",
-        element: <Account/>
+        element: <Account />
     },
     {
         path: "/payment",
-        element: <Payment/>
+        element: <Payment />
     },
     {
         path: "/plans",
-        element: <Plans/>
+        element: <Plans />
     },
     {
         path: "/calendar",
-        element: <Calendar/>
+        element: <Calendar />
+    },
+    {
+        path: "/admin",
+        element: <Admin />
     }
 ]);
 function App() {
     return (
-        <RouterProvider router={router}/>
+        <RouterProvider router={router} />
     );
 }
 
