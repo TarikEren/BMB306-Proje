@@ -4,6 +4,9 @@ import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequestMapping("/auth")
@@ -25,4 +28,11 @@ public class AuthController {
         // Aynı anda ikisini de içeren hesap varsa giriş yap.
         return "Login successful";
     }
+
+    @PostMapping("/logout")
+    public String logoutUser(@RequestBody User user) {
+        //Kullanıcıyı hesaptan çıkar        
+        return "Logout successfull";
+    }
+    
 }
