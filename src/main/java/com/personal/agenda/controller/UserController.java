@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.personal.agenda.controller;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
