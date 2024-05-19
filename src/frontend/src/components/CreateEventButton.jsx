@@ -6,7 +6,7 @@ export default function CreateEventButton() {
   return (
     <button
       onClick={() => setShowEventModal(true)}
-      className="border p-2 rounded-full flex items-center shadow-md hover:shadow-2xl"
+      className="border border-gray-700 p-2 rounded-full flex items-center shadow-md hover:shadow-2xl bg-white"
     >
       <img src={plusImg} alt="create_event" className="w-7 h-7" />
       <span className="pl-3 pr-3"> Create</span>

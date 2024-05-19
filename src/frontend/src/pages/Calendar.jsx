@@ -20,7 +20,7 @@ function Calendar() {
         <React.Fragment>
             {showEventModal && <EventModal />}
             <div className="h-screen flex flex-col">
-                <CalendarHeader />
+                <CalendarHeader/>
                 <div className="flex flex-1">
                     <Sidebar />
                     <Month month={currentMonth} />
