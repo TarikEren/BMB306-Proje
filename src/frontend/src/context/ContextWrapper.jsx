@@ -14,6 +14,8 @@ export default function ContextWrapper(props) {
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [labels, setLabels] = useState([]);
     const [allEvents, setAllEvents] = useState([]);
+    const [userLoggedIn, setUserLoggedIn] = useState(false);
+    const [userIsPremium, setUserIsPremium] = useState(false);
 
     const filteredEvents = useMemo(() => {
         return allEvents.filter((evt) =>
@@ -55,6 +57,8 @@ export default function ContextWrapper(props) {
                 setLabels,
                 labels,
                 filteredEvents,
+                userLoggedIn,
+                userIsPremium
             }}
         >
             {props.children}
