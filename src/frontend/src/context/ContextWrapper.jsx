@@ -58,7 +58,9 @@ export default function ContextWrapper(props) {
                 labels,
                 filteredEvents,
                 userLoggedIn,
-                userIsPremium
+                setUserLoggedIn,
+                userIsPremium,
+                setUserIsPremium
             }}
         >
             {props.children}

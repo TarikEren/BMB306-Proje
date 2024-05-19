@@ -17,7 +17,9 @@ const GlobalContext = React.createContext({
     labels: [],
     filteredEvents: [],
     userLoggedIn: false,
-    userIsPremium: false
+    setUserLoggedIn: () => {},
+    userIsPremium: false,
+    setUserIsPremium: () => {}
 });
 
 export default GlobalContext;
