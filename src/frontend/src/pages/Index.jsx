@@ -6,11 +6,11 @@ function Index() {
     <React.Fragment>
       <Navbar />
       <div className="h-screen w-screen">
-        <div className="grid grid-cols-7">
-          <div className="col-span-2">
+        <div className="grid grid-cols-7 h-screen">
+          <div className="col-span-2 bg-red-400">
             Login
           </div>
-          <div className="col-span-5">
+          <div className="col-span-5 bg-blue-300">
             Resim
           </div>
         </div>
