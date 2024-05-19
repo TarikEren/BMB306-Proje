@@ -44,9 +44,9 @@ export default function SmallCalendar() {
     }
   }
   return (
-    <div className="mt-9">
-      <header className="flex justify-between mb-2">
-        <p className="text-black font-bold">
+    <div className="mt-9 border-2 bg-white rounded">
+      <header className="flex justify-between my-2">
+        <p className="text-black font-bold ml-2">
           {dayjs(new Date(dayjs().year(), currentMonthIdx)).format(
             "MMMM YYYY"
           )}
@@ -66,7 +66,7 @@ export default function SmallCalendar() {
       </header>
       <div className="grid grid-cols-7 grid-rows-6 text-gray-700 font-bold">
         {currentMonth[0].map((day, i) => (
-          <span key={i} className="text-sm py-1 text-center">
+          <span key={i} className="text-sm py-1 text-center border-b">
             {day.format("dd").charAt(0)}
           </span>
         ))}
