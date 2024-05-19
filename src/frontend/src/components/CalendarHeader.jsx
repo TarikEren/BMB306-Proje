@@ -24,9 +24,9 @@ export default function CalendarHeader() {
     <header className="px-4 py-2 flex items-center bg-red-400 text-white justify-between">
       <div className="flex flex-row items-center">
         <img src={logo} alt="calendar" className="mr-2 w-12 h-12" />
-        <h1 className="mr-10 text-xl text-white fond-bold">
+        <a href="/" className="mr-10 text-xl text-white fond-bold">
           Calendar
-        </h1>
+        </a>
         <button
           onClick={handleReset}
           className="border rounded py-2 px-4 mr-5"
