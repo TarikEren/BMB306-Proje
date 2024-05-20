@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaArrowCircleRight } from "react-icons/fa";
+import GlobalContext from '../context/GlobalContext';
 
 function PriceSection(props) {
+    const { cardNumber, cvc } = useContext(GlobalContext);
+    const validCardNumber = () => {
+        let hasNoLetters = /^\d+$/.test(cardNumber);
+        if (cardNumber !== null && hasNoLetters && cardNumber.length === 16) return true;
+        return false;
+    }
     function sendPayment() {
-
+        if (validCardNumber()) {
+            return null;
+        }
+        //Sorun yoksa kullanıcıyı premium yap
+        return true;
     }
     return (
         <div className="border w-12/12 p-5 h-fit w-3/12 space-y-5">

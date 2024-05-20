@@ -8,8 +8,8 @@ import Visa from "../assets/visa.svg";
 import MasterCard from "../assets/mastercard.svg";
 
 function Payment() {
-    const [payment, setPayment] = useState("");
     const [render, setRender] = useState(false);
+    const [cardNumber, setCardNumber] = useState(null);
     return (
         <React.Fragment>
             <Navbar />
@@ -35,7 +35,7 @@ function Payment() {
                                     </div>
                                 </div>
                             </div>
-                            <PaymentSection payment={payment} />
+                            <PaymentSection />
                         </div>
                     </div>
                     <PriceSection plan={59.99} />

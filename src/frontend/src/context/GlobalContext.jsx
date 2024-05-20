@@ -19,7 +19,11 @@ const GlobalContext = React.createContext({
     userLoggedIn: false,
     setUserLoggedIn: () => {},
     userIsPremium: false,
-    setUserIsPremium: () => {}
+    setUserIsPremium: () => {},
+    cardNumber: null,
+    setCardNumber: () => {},
+    cvc: null,
+    setCvc: () => {}
 });
 
 export default GlobalContext;
