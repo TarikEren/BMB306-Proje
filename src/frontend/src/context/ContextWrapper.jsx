@@ -20,6 +20,8 @@ export default function ContextWrapper(props) {
     const [cvc, setCvc] = useState(null);
     const [userName, setUserName] = useState(null);
     const [userPassword, setUserPassword] = useState(null);
+    const [email, setEmail] = useState(null);
+    
 
     const filteredEvents = useMemo(() => {
         return allEvents.filter((evt) =>
