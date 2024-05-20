@@ -1,4 +1,4 @@
-package main.java.com.personal.agenda.model;
+package com.personal.agenda.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
