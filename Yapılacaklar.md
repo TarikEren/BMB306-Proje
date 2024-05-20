@@ -5,19 +5,19 @@
 ## Backend
 
 ***AdminController***
-- Tek kullanıcı al
+- Tek kullanıcı al ✅ (merto)
 
 ***AuthController***
-- Giriş route'unu tamamla
-- Çıkış route'unu ekle
-- Kullanıcının giriş halinde kalması için token ekle
+- Giriş route'unu tamamla ✅ (merto)
+- Çıkış route'unu ekle ✅ (merto)
+- Kullanıcının giriş halinde kalması için token ekle ✅ (merto)
 
 ***PaymentController***
-- Ödeme mantığını ekle
+- Ödeme mantığını ekle ✅ (merto)
 
 ***SubscriptionController***
-- Planları ekle
-- Kullanıcılara plan ekle
+- Planları ekle ✅ (merto)
+- Kullanıcılara plan ekle ✅ (merto)
 
 - EventController.java oluştur ✅ (mali)
     - Randevu yönetimi için ✅ (mali)
