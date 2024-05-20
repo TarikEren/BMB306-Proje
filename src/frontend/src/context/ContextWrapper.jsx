@@ -58,7 +58,7 @@ export default function ContextWrapper(props) {
                 allEvents,
                 setAllEvents,
 
-                //Tekrar bak
+                //TODO: Tekrar bak
                 selectedEvent,
                 setSelectedEvent,
                 setLabels,
