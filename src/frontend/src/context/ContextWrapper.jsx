@@ -68,6 +68,7 @@ export default function ContextWrapper(props) {
                 cardNumber,
                 setCardNumber,
                 cvc,
+                setCvc,
                 userName,
                 setUserName,
                 userPassword,
