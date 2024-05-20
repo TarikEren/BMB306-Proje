@@ -30,9 +30,6 @@ function Navbar() {
                     ) : (
                         <>
                             <li className='p-2'>
-                                <a href="/login" className='p-3 border rounded'>Login</a>
-                            </li>
-                            <li className='p-2'>
                                 <a href="/register" className='p-3 border rounded'>Register</a>
                             </li>
                         </>
