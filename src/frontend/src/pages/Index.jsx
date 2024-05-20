@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import { FaUser } from "react-icons/fa"
+import  "./css/login.css"
 
 function Index() {
   return (
