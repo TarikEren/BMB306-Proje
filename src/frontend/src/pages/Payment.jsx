@@ -9,17 +9,25 @@ import MasterCard from "../assets/mastercard.svg";
 function Payment() {
     const [cardNumber, setCardNumber] = useState(null);
     const [validCardNumber, setValidCardNumber] = useState(null);
-    const checkValidCardNumber = () => {
+    const [cardOwner, setCardOwner] = useState(null);
+    const checkValidOwner = () => {
+        let hasNoDigits = /^[a-zA-Z]+$/.test(cardOwner);
+        if (cardOwner !== null && hasNoDigits) {
+            return true;
+        }
+        return false;
+    }
+    const checkValidNumber = () => {
         let hasNoLetters = /^\d+$/.test(cardNumber);
         if (cardNumber !== null && hasNoLetters && cardNumber.length === 16) return true;
         return false;
     }
     function sendPayment() {
-        if (validCardNumber()) {
-            return null;
+        if (checkValidNumber() && checkValidOwner()) {
+            //Sorun yoksa kullanıcıyı premium yap
+            return true;
         }
-        //Sorun yoksa kullanıcıyı premium yap
-        return true;
+        return null;
     }
     return (
         <React.Fragment>
