@@ -46,6 +46,7 @@ export default function ContextWrapper(props) {
     return (
         <GlobalContext.Provider
             value={{
+                //Takvim kısmı
                 monthIndex,
                 setMonthIndex,
                 smallCalendarMonth,
@@ -54,13 +55,17 @@ export default function ContextWrapper(props) {
                 setDaySelected,
                 showEventModal,
                 setShowEventModal,
-                selectedEvent,
-                setSelectedEvent,
                 allEvents,
                 setAllEvents,
+
+                //Tekrar bak
+                selectedEvent,
+                setSelectedEvent,
                 setLabels,
                 labels,
                 filteredEvents,
+                
+                //User kısmı
                 userLoggedIn,
                 setUserLoggedIn,
                 userIsPremium,
