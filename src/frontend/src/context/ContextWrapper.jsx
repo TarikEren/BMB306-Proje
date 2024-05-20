@@ -21,6 +21,7 @@ export default function ContextWrapper(props) {
     const [userName, setUserName] = useState(null);
     const [userPassword, setUserPassword] = useState(null);
     const [email, setEmail] = useState(null);
+    const [accountType, setAccountType] = useState(null);
     
 
     const filteredEvents = useMemo(() => {
@@ -82,6 +83,8 @@ export default function ContextWrapper(props) {
                 setUserName,
                 userPassword,
                 setUserPassword,
+                accountType,
+                setAccountType
             }}
         >
             {props.children}

@@ -34,6 +34,8 @@ const GlobalContext = React.createContext({
     setUserName: () => {},
     userPassword: null,
     setUserPassword: () => {},
+    accountType: null,
+    setAccountType: () => {}
 });
 
 export default GlobalContext;
