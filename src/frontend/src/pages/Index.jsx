@@ -4,7 +4,7 @@ import { FaUser,FaLock } from "react-icons/fa"
 import  "./css/login.css"
 
 function Index() {
-  return (
+  return ( <div className='bodyy'>
       <div className="wrapper">
             <form action="">
               <h1>Login</h1>
@@ -25,6 +25,7 @@ function Index() {
                 <p>Hala bir hesabın yok mu? <a href="#">Register</a></p>
               </div>
             </form>
+          </div>
           </div>
   );
 }
