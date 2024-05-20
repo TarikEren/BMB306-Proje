@@ -22,20 +22,20 @@
 - EventController.java oluştur
     - Randevu yönetimi için
 
-***Veri tabanı***
-- Randevu başlangıç ve bitiş saati ekle
+***Veri tabanı*** ✅ (mali)
+- Randevu başlangıç ve bitiş saati ekle ✅ (mali)
 
-***Modeleri Ekle***
-- User Model
--Randevu Model
-- Category Model
+***Modeleri Ekle*** ✅ (mali)
+- User Model ✅ (mali)
+-Randevu Model ✅ (mali)
+- Category Model ✅ (mali)
 
-***Her model için repository de lazımmış*** 
-- User Repo
-- Randevu Repo
-- Category Repo
+***Her model için repository de lazımmış*** ✅ (mali) 
+- User Repo ✅ (mali)
+- Randevu Repo ✅ (mali)
+- Category Repo ✅ (mali)
 
-***Controllerları Modele Bağla***
+***Controllerları Modele Bağla*** ✅ (mali)
 
 
 ## Frontend
