@@ -5,7 +5,6 @@ import axios from "axios";
 
 //Pages
 import Index from './pages/Index';
-import Login from './pages/Login';
 import Register from './pages/Register';
 import About from './pages/About';
 import Account from './pages/Account';
@@ -18,10 +17,6 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Index />
-    },
-    {
-        path: "/login",
-        element: <Login />
     },
     {
         path: "/register",
