@@ -19,8 +19,8 @@
 - Planları ekle
 - Kullanıcılara plan ekle
 
-- EventController.java oluştur
-    - Randevu yönetimi için
+- EventController.java oluştur ✅ (mali)
+    - Randevu yönetimi için ✅ (mali)
 
 ***Veri tabanı*** ✅ (mali)
 - Randevu başlangıç ve bitiş saati ekle ✅ (mali)
