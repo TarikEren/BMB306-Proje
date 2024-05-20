@@ -25,6 +25,18 @@
 ***Veri tabanı***
 - Randevu başlangıç ve bitiş saati ekle
 
+***Modeleri Ekle***
+- User Model
+-Randevu Model
+- Category Model
+
+***Her model için repository de lazımmış*** 
+- User Repo
+- Randevu Repo
+- Category Repo
+
+***Controllerları Modele Bağla***
+
 ## Frontend
 - Dizayn
 
