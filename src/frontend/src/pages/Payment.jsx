@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
 
 import Navbar from '../components/Navbar';
-import PaymentSection from '../components/PaymentSection';
-import PriceSection from '../components/PriceSection';
+import { FaArrowCircleRight } from "react-icons/fa";
 
 import Visa from "../assets/visa.svg";
 import MasterCard from "../assets/mastercard.svg";
 
 function Payment() {
-    const [render, setRender] = useState(false);
     const [cardNumber, setCardNumber] = useState(null);
+    const [validCardNumber, setValidCardNumber] = useState(null);
+    const checkValidCardNumber = () => {
+        let hasNoLetters = /^\d+$/.test(cardNumber);
+        if (cardNumber !== null && hasNoLetters && cardNumber.length === 16) return true;
+        return false;
+    }
+    function sendPayment() {
+        if (validCardNumber()) {
+            return null;
+        }
+        //Sorun yoksa kullanıcıyı premium yap
+        return true;
+    }
     return (
         <React.Fragment>
             <Navbar />
@@ -35,10 +46,82 @@ function Payment() {
                                     </div>
                                 </div>
                             </div>
-                            <PaymentSection />
+                            <div className="pl-1 flex flex-row items-center justify-between">
+                                <label>
+                                    <h1 className="text-xl font-semibold">
+                                        Kredi kartı
+                                    </h1>
+                                </label>
+                                <select name="" id="" className="bg-white border rounded w-10/12 p-3">
+                                    <option value="visa">Visa</option>
+                                    <option value="mastercard">Mastercard</option>
+                                </select>
+                            </div>
+                            <div className="pl-1 flex flex-row items-center justify-between">
+                                <label>
+                                    <h1 className="text-xl font-semibold">
+                                        Kart Sahibi
+                                    </h1>
+                                </label>
+                                <input type="text" name="" id="" className="border rounded w-10/12 p-3" />
+                            </div>
+                            <div className="pl-1 flex flex-row items-center justify-between">
+                                <label>
+                                    <h1 className="text-xl font-semibold">
+                                        Kart Numarası
+                                    </h1>
+                                </label>
+                                <input type="text" name="" id="" className="border rounded w-10/12 p-3" onChange={(e) => setCardNumber(e.target.value)} />
+                            </div>
+                            <div className="pl-1 flex flex-row items-center space-x-10">
+                                <div className="flex flex-col space-y-3">
+                                    <label>
+                                        <h1 className="text-xl font-semibold">
+                                            Ay
+                                        </h1>
+                                    </label>
+                                    <input type="number" className="border rounded p-3" />
+                                </div>
+                                <div className="flex flex-col space-y-3">
+                                    <label>
+                                        <h1 className="text-xl font-semibold">
+                                            Yıl
+                                        </h1>
+                                    </label>
+                                    <input type="number" className="border rounded p-3" />
+                                </div>
+                                <div className="flex flex-col space-y-3">
+                                    <label>
+                                        <h1 className="text-xl font-semibold">
+                                            CVC
+                                        </h1>
+                                    </label>
+                                    <input type="text" className="border rounded p-3" onChange={(e) => setCvc(e.target.value)} />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <PriceSection plan={59.99} />
+                    <div className="border w-12/12 p-5 h-fit w-3/12 space-y-5">
+                        <h1 className='text-2xl font-semibold'>
+                            Sipariş Özeti
+                        </h1>
+                        <p className='text-xl'>Ara Toplam: TL</p>
+                        <p className='text-xl'>KDV: 15.99 TL</p>
+                        <hr />
+                        <p className='text-2xl font-semibold'>Genel Toplam: TL</p>
+                        <button
+                            className='p-2 rounded border w-full bg-green-400 text-white font-semibold text-lg'
+                            onClick={sendPayment}>
+                            <div className="flex flex-row items-center justify-center space-x-3">
+                                <p>
+                                    Devam Et
+                                </p>
+                                <span>
+                                    <FaArrowCircleRight />
+                                </span>
+                            </div>
+                        </button>
+                    </div>
                 </div>
             </div>
         </React.Fragment>

@@ -18,6 +18,8 @@ export default function ContextWrapper(props) {
     const [userIsPremium, setUserIsPremium] = useState(false);
     const [cardNumber, setCardNumber] = useState(null);
     const [cvc, setCvc] = useState(null);
+    const [userName, setUserName] = useState(null);
+    const [userPassword, setUserPassword] = useState(null);
 
     const filteredEvents = useMemo(() => {
         return allEvents.filter((evt) =>
@@ -44,6 +46,7 @@ export default function ContextWrapper(props) {
     return (
         <GlobalContext.Provider
             value={{
+                //Takvim kısmı
                 monthIndex,
                 setMonthIndex,
                 smallCalendarMonth,
@@ -52,20 +55,29 @@ export default function ContextWrapper(props) {
                 setDaySelected,
                 showEventModal,
                 setShowEventModal,
-                selectedEvent,
-                setSelectedEvent,
                 allEvents,
                 setAllEvents,
+
+                //TODO: Tekrar bak
+                selectedEvent,
+                setSelectedEvent,
                 setLabels,
                 labels,
                 filteredEvents,
+                
+                //User kısmı
                 userLoggedIn,
                 setUserLoggedIn,
                 userIsPremium,
                 setUserIsPremium,
                 cardNumber,
                 setCardNumber,
-                cvc
+                cvc,
+                setCvc,
+                userName,
+                setUserName,
+                userPassword,
+                setUserPassword,
             }}
         >
             {props.children}
