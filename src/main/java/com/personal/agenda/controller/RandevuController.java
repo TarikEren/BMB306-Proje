@@ -1,4 +1,4 @@
-package main.java.com.personal.agenda.controller;
+package com.personal.agenda.controller;
 
 import com.personal.agenda.model.Randevu;
 import com.personal.agenda.repository.RandevuRepository;
