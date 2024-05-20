@@ -1,21 +1,31 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import { FaUser } from "react-icons/fa"
 
 function Index() {
   return (
-    <React.Fragment>
-      <Navbar />
-      <div className="h-screen w-screen">
-        <div className="grid grid-cols-7 h-screen">
-          <div className="col-span-2 bg-green-400">
-            Login
+      <div className="wrapper">
+            <form action="">
+              <h1>Login</h1>
+              <div className="input-box">
+                <input type="text" placeholder='Username' required />
+                <FaUser />
+              </div>
+              <div className="input-box">
+                <input type="password" placeholder='Password' required />
+              </div>
+
+              <div className='remember-forgot'>
+                <label><input type="checkbox"/>RememberMe</label>
+                <a href="#">Forgot Password</a>
+              </div>
+              <button type='submit'>Login</button>
+              
+              <div className="register-link">
+                <p>Hala bir hesabın yok mu? <a href="#">Register</a></p>
+              </div>
+            </form>
           </div>
-          <div className="col-span-5 bg-blue-300">
-            Resim
-          </div>
-        </div>
-      </div>
-    </React.Fragment>
   );
 }
 
