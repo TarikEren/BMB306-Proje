@@ -33,7 +33,7 @@ function Payment() {
             setValidCardNumber(true);
             numberBox.classList.remove("border-red-500");
             return true;
-        };
+        }
         numberBox.classList.add("border-red-500");
         setValidCardNumber(false);
         return false;
