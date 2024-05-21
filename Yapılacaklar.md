@@ -56,5 +56,6 @@
     - Backende post ve put (patch) request yolla
     - Description kısmı ekle
 - Label kısmını ekle
+- Giriş yapan kullanıcının IDsini al
 - Sürükle bırak
 - Register confirmPassword kontrolü
