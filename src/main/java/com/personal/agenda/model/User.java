@@ -1,6 +1,6 @@
 package com.personal.agenda.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "user")
