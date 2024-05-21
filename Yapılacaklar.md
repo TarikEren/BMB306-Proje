@@ -37,6 +37,12 @@
 
 ***Controllerları Modele Bağla*** ✅ (mali)
 
+##Yeniden Oluşturulacaklar
+- SecurityConfig.java
+- PaymentController.java
+- PaymentDetails.java
+- JwtUtil.java
+- SubscriptionPlan.java
 
 ## Frontend
 - Dizayn
