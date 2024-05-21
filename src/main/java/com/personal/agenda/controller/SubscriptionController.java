@@ -1,6 +1,10 @@
 package com.personal.agenda.controller;
 
+import com.personal.agenda.model.SubscriptionPlan;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/subscriptions")
@@ -29,10 +33,12 @@ public class SubscriptionController {
     
     private List<SubscriptionPlan> fetchSubscriptionPlans() {
         // ... (Subscription planlarını alma mantığı)
+        return new ArrayList<>();
     }
 
     private SubscriptionPlan getSubscriptionPlanById(String planId) {
         // ... (Planı ID'ye göre alma mantığı)
+        return new SubscriptionPlan();
     }
 
     private void subscribeUserToPlan(Long userId, SubscriptionPlan plan) {
