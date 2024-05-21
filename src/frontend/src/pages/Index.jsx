@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 import { FaUser,FaLock } from "react-icons/fa"
 import  "./css/login.css"
 
@@ -22,7 +21,7 @@ function Index() {
               <button type="submit">Login</button>
               
               <div className="register-link">
-                <p>Hala bir hesabın yok mu? <a href="#">Register</a></p>
+                <p>Hala bir hesabın yok mu? <a href="/register">Register</a></p>
               </div>
             </form>
           </div>
