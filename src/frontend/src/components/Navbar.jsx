@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 function Navbar() {
     const { userLoggedIn, userIsPremium } = useContext(GlobalContext);
     return (
-        <nav className='flex flex-row bg-red-400 px-4 py-2 text-white'>
+        <nav className='flex flex-row bg-gradient-to-r from-teal-300 to-blue-400 drop-shadow-2xl px-4 py-2 text-white'>
             <div className="flex flex-row items-center">
                 <img src={logo} alt="calendar" className="mr-2 w-12 h-12" />
                 <a href="/" className='text-white py-2 text-xl'>Calendar</a>
