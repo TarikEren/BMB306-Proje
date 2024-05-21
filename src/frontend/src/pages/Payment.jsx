@@ -12,7 +12,7 @@ function Payment() {
     const [validCardNumber, setValidCardNumber] = useState(null);
     const [cardOwner, setCardOwner] = useState(null);
     const [validCardOwner, setValidCardOwner] = useState(null);
-    const {price, setPrice} = useContext(GlobalContext);
+    const {price} = useContext(GlobalContext);
 
     const checkValidOwner = () => {
         const ownerBox = document.getElementById("card-owner");
