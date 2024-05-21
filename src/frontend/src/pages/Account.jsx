@@ -28,46 +28,47 @@ function Account() {
   return (
     <>
       <Navbar />
-      <div className="px-4 flex-auto ">
-        <div className="m-6 flex-auto mx-[25.5rem] bg-teal-300 rounded h-screen" >
-          <div>
-            <h1 className="m-4 p flex-auto inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight ">Hesap</h1>
+      
+      <div className="h-screen w-screen bg-gradient-to-r from-teal-300 to-blue-400 ">
+        <div className="drop-shadow-lg  flex-auto mx-[25.5rem] rounded h-screen" >
+          <div class="">
+            <h1 className="flex-auto inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight ">Hesap</h1>
           </div>
         
       
           <div>
-            <h2 className=" inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight">User Bilgisi</h2>
+            <h2 className="font-mono pl-4 inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight">User Bilgisi</h2>
           </div>
-      <div className= "m-3 text-lg py-3">
-      <input className= "rounded w-6/12 p-3 shadow-inner" type="text" value={userName ? userName : " "}  required name="Username" onChange={(e) => setUsername(e.target.value)} />
+      <div className= "drop-shadow-lg m-3 text-lg py-3">
+      <input className= "opacity-75 rounded w-6/12 p-3 shadow-inner" type="text" value={userName && userName } required name="username" onChange={(e) => setUsername(e.target.value)} />
       </div>
-      <div className= "m-3 text-lg py-3">
-      <input className= "rounded w-6/12 p-3 shadow-inner" type="text" value={email ? email : " "} required name="Email" onChange={(e) => setEmail(e.target.value)} />  
+      <div className= "drop-shadow-lg m-3 text-lg py-3">
+      <input className= "opacity-75 rounded w-6/12 p-3 shadow-inner" type="email" value={email ? email : " "} required name="Email" onChange={(e) => setEmail(e.target.value)} />  
       </div>
-      <div className= " m-4 space-x-10 text-lg">
-        <input className= "rounded w-4/12 p-3 shadow-inner" type="text" value={ad ? ad : " "} required name="Ad" onChange={(e) => setName(e.target.value)} /> 
-        <input className= "rounded w-4/12 p-3 shadow-inner" type="text" value={soyAd ? soyAd : " "} required name="Soyad" onChange={(e) => setSurname(e.target.value)} /> 
+      <div className= " drop-shadow-lg m-3 py-3 space-x-10 text-lg">
+        <input className= "opacity-75 rounded w-4/12 p-3 shadow-inner" type="text" value={ad ? ad : " "} required name="Ad" onChange={(e) => setName(e.target.value)} /> 
+        <input className= "opacity-75 rounded w-4/12 p-3 shadow-inner" type="text" value={soyAd ? soyAd : " "} required name="Soyad" onChange={(e) => setSurname(e.target.value)} /> 
       </div>
-      <button className="m-4 px-11 rounded-full outline outline-offset-2 outline-blue-500 text-2xl ">Kaydet</button>
+      <button className="drop-shadow-xl m-4 px-11 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2] text-2xl ">Kaydet</button>
       <div className= " m-4 text-xl"> <p>premiyum admin veya free user bilgisi 
         </p> 
-        <button className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]"  >premiuma gec</button>
-        <button className="mx-10  outline outline-offset-1 outline-1 outline-blue-500 ">Admin paneli</button>
+        <a className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]" href="/payment" >premiuma gec</a>
+        <button className="mx-10  outline outline-offset-1 outline-1 outline-blue-900 ">Admin paneli</button>
       </div>
-      <div>
-        <h1 className="inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight">Sifre değiştirme 
+      <div className="pl-4" >
+        <h1 className="font-mono inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight">Sifre değiştirme 
           </h1>
       </div>
-      <div className= "m-4 text-lg space-x-10">
-      <input className= "rounded w-4/12 p-3 shadow-inner" type="password" placeholder="Eski Sifre" required name="Eski Sifre"onChange={(e) => setOldPassword(e.target.value)} />
+      <div className= "drop-shadow-lg m-4 text-lg space-x-10">
+      <input className= "rounded w-4/12 p-3 my-4 shadow-inner" type="password" placeholder="Eski Sifre" required name="Eski Sifre"onChange={(e) => setOldPassword(e.target.value)} />
       </div>
-      <div className= "m-4 text-lg space-x-10">
+      <div className= "drop-shadow-lg m-4 text-lg space-x-10">
         <input className= "rounded w-4/12 p-3 shadow-inner" type="password" placeholder="Yeni Sifre" required name="Yeni Sifre"onChange={(e) => setPassword(e.target.value)} />
         <input className= "rounded w-4/12 p-3 shadow-inner" type="password" placeholder="Tekrar Sifre" required name="Tekrar Sifre"onChange={(e) => setConfirmPassword(e.target.value)} />
         
       </div>
       
-      <button className="px-11 text-2xl m-4 rounded-full outline outline-offset-2 outline-blue-500 "onClick= {()=>{paswordtest()
+      <button className="transition ease-in-out drop-shadow-lg px-11 text-2xl m-4 rounded-full outline outline-offset-2 outline-blue-500 hover:scale-110 "onClick= {()=>{paswordtest()
      }}>Save Changes</button>
  
           
