@@ -45,7 +45,7 @@ function Account() {
               </div>
               <div className="drop-shadow-lg m-3 text-lg py-3">
                 <input
-                  className="opacity-75 rounded w-6/12 p-3 shadow-inner"
+                  className="opacity-75 rounded w-9/12 p-3 shadow-inner"
                   type="text"
                   value={userName && userName}
                   placeholder="Kullanıcı Adı"
@@ -56,7 +56,7 @@ function Account() {
               </div>
               <div className="drop-shadow-lg m-3 text-lg py-3">
                 <input
-                  className="opacity-75 rounded w-6/12 p-3 shadow-inner"
+                  className="opacity-75 rounded w-9/12 p-3 shadow-inner"
                   type="email"
                   value={email ? email : " "}
                   placeholder="E-mail"
@@ -97,7 +97,7 @@ function Account() {
               </div>
               <div className="drop-shadow-lg m-4 text-lg space-x-10">
                 <input
-                  className="rounded w-4/12 p-3 my-4 shadow-inner"
+                  className="rounded w-9/12 p-3 my-4 shadow-inner"
                   type="password"
                   placeholder="Eski Sifre"
                   required
