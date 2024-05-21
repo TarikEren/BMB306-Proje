@@ -29,7 +29,6 @@ export default function EventModal() {
       ? labelsClasses.find((lbl) => lbl === selectedEvent.label)
       : labelsClasses[0]
   );
-  const [allDay, setAllDay] = useState(false);
 
   async function postEvent(event) {
     //TODO: Create event
@@ -54,55 +53,54 @@ export default function EventModal() {
           </button>
         </header>
         <div className="p-3">
-          <div className="flex flex-col gap-y-4">
-            <div className=""></div>
-            <input type="text" name="title" placeholder='Add Title'
+          <div className="flex flex-col">
+
+            {/* Başlık Kısmı */}
+            <input type="text" name="title" placeholder='Başlık'
               value={title}
               onChange={(e) => { setTitle(e.target.value) }}
               required
-              className='pt-3 border-0 text-gray-600 text-xl font-semibold pb-2 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500'
+              className='pt-3 border-0 text-gray-600 text-xl font-semibold pb-2 w-full focus:outline-none focus:ring-0 focus:border-blue-500'
             />
+
+            {/* Açıklama Kısmı */}
+            <input type="text" name="title" placeholder='Açıklama'
+              value={description}
+              onChange={(e) => { setDescription(e.target.value) }}
+              required
+              className='pt-3 border-0 text-gray-600 text-xl font-semibold pb-2 w-full focus:outline-none focus:ring-0 focus:border-blue-500'
+            />
+
+            {/* Başlangıç Tarihi Seçimi*/}
             <div className="flex flex-row items-center space-x-5">
               <span className="text-gray-400 mt-4">
-                Start
+                Başlangıç
               </span>
-              <div className="flex flex-row space-x-10">
+              <div className="flex flex-row">
                 <button className='mt-4 p-1 hover:bg-gray-400 hover:text-white rounded'>
                   <span>
                     {daySelected.format("dddd, MMMM, DD")}
                   </span>
                 </button>
-                {allDay ? (<></>) : (
-                  <>
-                    <input type="time" name="start_time" id="" className='rounded border-gray-400' />
-                  </>
-                )}
               </div>
             </div>
-            <div className="flex flex-row items-center space-x-6">
+
+            {/* Bitiş Tarihi Seçimi */}
+            <div className="flex flex-row items-center space-x-5">
               <span className="text-gray-400 mt-4">
-                End
+                Bitiş
               </span>
-              <div className="flex flex-row space-x-10">
+              <div className="flex flex-row">
                 <button className='mt-4 p-1 hover:bg-gray-400 hover:text-white rounded'>
                   <span>
                     {daySelected.format("dddd, MMMM, DD")}
                   </span>
                 </button>
-                {allDay ? (<></>) : (
-                  <>
-                    <input type="time" name="end_time" id="" className='rounded border-gray-400' onChange={setAllDay(!allDay)} />
-                  </>
-                )}
               </div>
             </div>
-            <div className="flex flex-row items-center space-x-5 mt-5">
-              <span className="text-gray-400 mb-2">
-                All Day
-              </span>
-              <input type="checkbox" name="all_day" id="" className='mb-1 rounded border-gray-400' />
-            </div>
-            <div className="flex flex-row space-x-10">
+
+            {/* Etiket seçme kısmı - Kaldırılabilir veri tabanında karşılığı yok */}
+            <div className="flex flex-row space-x-10 mt-5">
               <span className='text-gray-400 mt-1'>
                 <FaBookmark className='text-blue-500' />
               </span>
@@ -165,6 +163,8 @@ export default function EventModal() {
             </div>
           </div>
         </div>
+        
+        {/* Yükle */}
         <footer className='flex justify-end border-t p-3 mt-5'>
           <button type="submit"
             className='bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white'>
