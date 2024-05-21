@@ -13,7 +13,8 @@ function Payment() {
     const [cardOwner, setCardOwner] = useState(null);
     const [validCardOwner, setValidCardOwner] = useState(null);
     const {price} = useContext(GlobalContext);
-
+    const kdv = price - (price / 1.18);
+    
     const checkValidOwner = () => {
         const ownerBox = document.getElementById("card-owner");
         let hasNoDigits = !/[^a-z]/i.test(cardOwner);
@@ -148,10 +149,10 @@ function Payment() {
                         <h1 className='text-2xl font-semibold'>
                             Sipariş Özeti
                         </h1>
-                        <p className='text-xl'>Ara Toplam: {price} TL</p>
-                        <p className='text-xl'>KDV: 16 TL</p>
+                        <p className='text-xl'>Ara Toplam: {(price-kdv).toFixed(2)} TL</p>
+                        <p className='text-xl'>KDV: {(kdv).toFixed(2)} TL</p>
                         <hr />
-                        <p className='text-2xl font-semibold'>Genel Toplam: {price + 16} TL</p>
+                        <p className='text-2xl font-semibold'>Genel Toplam: {price} TL</p>
                         <button
                             className='p-2 rounded border w-full bg-green-400 text-white font-semibold text-lg'
                             onClick={() => {
