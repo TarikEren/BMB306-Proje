@@ -9,6 +9,7 @@ function Plans() {
   return (
     <React.Fragment>
       <Navbar />
+  
       <div class="w-screen h-screen m-10 ">
         <div class="row h-screen">
           <div class="ml-8 col-sm-5 h-screen">

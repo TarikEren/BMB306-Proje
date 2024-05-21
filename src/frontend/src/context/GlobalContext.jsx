@@ -38,7 +38,9 @@ const GlobalContext = React.createContext({
     accountType: null,
     setAccountType: () => {},
     price: null,
-    setPrice: () => {}
+    setPrice: () => {},
+    userIsAdmin: false
+    
 });
 
 export default GlobalContext;

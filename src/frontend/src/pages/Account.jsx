@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 function Account() {
-  const { userName, userPassword, userEmail, name, surname } =
+  const { userName, userPassword, userEmail, name, surname, userIsPremium,userIsAdmin,} =
     useContext(GlobalContext);
   const [password, setPassword] = useState(null);
   const [email, setEmail] = useState(null);
@@ -14,6 +14,7 @@ function Account() {
   const [username, setUsername] = useState(null);
   const [oldPassword, setOldPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
+
 
   function passwordTest() {
     if (
@@ -40,9 +41,9 @@ function Account() {
     .catch((err) => console.error(err));
   }
 
-  useEffect(() => {
-    dataGonder();
-  }, [])
+  // useEffect(() => {
+  //   dataGonder();
+  // }, [])
 
   return (
     <>
@@ -50,7 +51,7 @@ function Account() {
 
       <div className="h-screen w-screen bg-gradient-to-r from-teal-300 to-blue-400 ">
         <div className="drop-shadow-lg  flex-auto mx-[25.5rem] rounded h-screen">
-          <div class="">
+          <div>
             <h1 className="flex-auto inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight ">
               Hesap
             </h1>
@@ -156,18 +157,19 @@ function Account() {
           <div className=" m-4 text-xl">
             {" "}
             {/* <p className="mb-3">Premium admin veya free user bilgisi</p> */}
-            <a
-              className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]"
+            {(!userIsPremium&&!userIsAdmin)&& <a
+              className="px-11 drop-shadow-lg transition ease-in-out delay-150 bg-blue-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]"
               href="/Plans"
             >
               premiuma gec
-            </a>
-            <a
-              className="mx-3 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]"
-              href="/Plans"
+            </a>}
+            
+            {userIsAdmin && <a
+              className="mx-3 px-11 drop-shadow-lg transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]"
+              href="/Admin"
             >
               Admin Paneli
-            </a>
+            </a>}
 
 
 
