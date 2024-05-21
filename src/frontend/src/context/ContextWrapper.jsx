@@ -20,9 +20,11 @@ export default function ContextWrapper(props) {
     const [cvc, setCvc] = useState(null);
     const [userName, setUserName] = useState(null);
     const [userPassword, setUserPassword] = useState(null);
-    const [email, setEmail] = useState(null);
+    const [userEmail, setUserEmail] = useState(null);
     const [accountType, setAccountType] = useState(null);
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState(null);
+    const [name, setName] = useState(null);
+    const [surname, setSurname] = useState(null);
     
 
     const filteredEvents = useMemo(() => {
@@ -78,8 +80,8 @@ export default function ContextWrapper(props) {
                 setCardNumber,
                 cvc,
                 setCvc,
-                email,
-                setEmail,
+                email: userEmail,
+                setEmail: setUserEmail,
                 userName,
                 setUserName,
                 userPassword,
@@ -87,7 +89,9 @@ export default function ContextWrapper(props) {
                 accountType,
                 setAccountType,
                 price,
-                setPrice
+                setPrice,
+                name,
+                surname
             }}
         >
             {props.children}
