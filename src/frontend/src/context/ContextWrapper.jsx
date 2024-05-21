@@ -25,6 +25,7 @@ export default function ContextWrapper(props) {
     const [price, setPrice] = useState(null);
     const [name, setName] = useState(null);
     const [surname, setSurname] = useState(null);
+    const [userIsAdmin, setUserIsAdmin] = useState(false);
     
 
     const filteredEvents = useMemo(() => {
@@ -91,7 +92,9 @@ export default function ContextWrapper(props) {
                 price,
                 setPrice,
                 name,
-                surname
+                surname,
+                userIsAdmin,
+                setUserIsAdmin
             }}
         >
             {props.children}
