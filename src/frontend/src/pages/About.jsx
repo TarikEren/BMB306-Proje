@@ -21,7 +21,6 @@ function About() {
         </li>
         <li>
         <p class="text-center mt-3 text-2xl">Ali Yıldız 1200606013</p>
-        <p></p>
         </li>
         <li>
         <p class="text-center mt-3 text-2xl">Fatih Atalay 1210606018</p>
