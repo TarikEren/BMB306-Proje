@@ -110,3 +110,12 @@ padding:0 20px 0 20px ;
 .register-link p a:hover{
     text-decoration: underline;
 }
+.btn{
+    margin-bottom: 15px;
+}
+.person{
+    display: flex;
+    justify-content: space-between;
+    margin-top: -40px;
+    margin-bottom: -40px;
+}
