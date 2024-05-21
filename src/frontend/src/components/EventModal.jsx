@@ -107,18 +107,60 @@ export default function EventModal() {
                 <FaBookmark className='text-blue-500' />
               </span>
               <div className="flex gap-x-2">
-                {labelsClasses.map((lblClass, i) => (
-                  <span
-                    key={i}
-                    onClick={() => setSelectedLabel(lblClass)}
-                    className={`bg-${lblClass}-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
-                    {selectedLabel === lblClass &&
-                      <span className='text-white text-sm'>
-                        <FaCheck />
-                      </span>
-                    }
-                  </span>
-                ))}
+                <span
+                  onClick={() => setSelectedLabel("indigo")}
+                  className={`bg-indigo-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
+                  {selectedLabel === "indigo" &&
+                    <span className='text-white text-sm'>
+                      <FaCheck />
+                    </span>
+                  }
+                </span>
+                <span
+                  onClick={() => setSelectedLabel("green")}
+                  className={`bg-green-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
+                  {selectedLabel === "green" &&
+                    <span className='text-white text-sm'>
+                      <FaCheck />
+                    </span>
+                  }
+                </span>
+                <span
+                  onClick={() => setSelectedLabel("gray")}
+                  className={`bg-gray-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
+                  {selectedLabel === "gray" &&
+                    <span className='text-white text-sm'>
+                      <FaCheck />
+                    </span>
+                  }
+                </span>
+                <span
+                  onClick={() => setSelectedLabel("blue")}
+                  className={`bg-blue-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
+                  {selectedLabel === "blue" &&
+                    <span className='text-white text-sm'>
+                      <FaCheck />
+                    </span>
+                  }
+                </span>
+                <span
+                  onClick={() => setSelectedLabel("red")}
+                  className={`bg-red-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
+                  {selectedLabel === "red" &&
+                    <span className='text-white text-sm'>
+                      <FaCheck />
+                    </span>
+                  }
+                </span>
+                <span
+                  onClick={() => setSelectedLabel("purple")}
+                  className={`bg-purple-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
+                  {selectedLabel === "purple" &&
+                    <span className='text-white text-sm'>
+                      <FaCheck />
+                    </span>
+                  }
+                </span>
               </div>
             </div>
           </div>
