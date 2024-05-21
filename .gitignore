@@ -56,4 +56,5 @@ dist-ssr
 *.sln
 *.sw?
 
+application.properties
 package-lock.json
