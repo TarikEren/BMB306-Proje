@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import GlobalContext from "../context/GlobalContext";
 import axios from "axios";
@@ -33,12 +33,16 @@ function Account() {
       name: ad ? ad : name,
       surname: soyAd ? soyAd : surname,
     }
-    const sendUser = await axios.post("http://localhost:8080/user", user)
+    await axios.post("http://localhost:8080/user", user)
     .then((res) => {
       console.log(res.status); //Kontrol için
     })
     .catch((err) => console.error(err));
   }
+
+  useEffect(() => {
+    dataGonder();
+  }, [])
 
   return (
     <>
