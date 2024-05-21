@@ -21,7 +21,7 @@ export default function CalendarHeader() {
     );
   }
   return (
-    <header className="px-4 py-2 flex items-center bg-red-400 text-white justify-between">
+    <header className="px-4 py-2 bg-gradient-to-r from-teal-300 to-blue-400 flex items-center text-white justify-between">
       <div className="flex flex-row items-center">
         <img src={logo} alt="calendar" className="mr-2 w-12 h-12" />
         <a href="/" className="mr-10 text-xl text-white fond-bold">
