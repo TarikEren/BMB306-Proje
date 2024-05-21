@@ -52,11 +52,11 @@ function Payment() {
         <React.Fragment>
             <Navbar />
             {/* Wrapper */}
-            <div className="h-screen w-screen">
+            <div className="h-screen w-screen bg-gradient-to-r from-teal-300 to-blue-400">
                 {/* Container */}
-                <div className="flex sm:flex-col lg:flex-row lg:justify-center mt-10 lg:space-x-4">
+                <div className="flex sm:flex-col lg:flex-row lg:justify-center lg:space-x-7">
                     <div className="">
-                        <div className="border w-12/12 p-5 space-y-10">
+                        <div className="mt-10 border bg-white w-12/12 p-5 space-y-10 rounded">
                             <header className='flex flex-col'>
                                 <h1 className='font-semibold text-3xl mb-2'>Ödeme</h1>
                                 <p>Bütün alışverişler şifreli ve güvenlidir</p>
@@ -142,7 +142,7 @@ function Payment() {
                             </div>
                         </div>
                     </div>
-                    <div className="border p-5 h-fit lg:w-3/12 sm:w-full space-y-5">
+                    <div className="bg-white rounded mt-10 border ml-3 p-5 h-fit lg:w-3/12 sm:w-full space-y-5">
                         <h1 className='text-2xl font-semibold'>
                             Sipariş Özeti
                         </h1>
