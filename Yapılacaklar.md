@@ -44,8 +44,8 @@
 ***Takvim***
 - Backend ile frontendi bağla
 - EventModal 
-    - Renk bugunu düzelt
-    - Tüm gün veya saatlik randevu oluşturma
+    - Renk bugunu düzelt ✅ (tarik)
+    - Tüm gün veya saatlik randevu oluşturma (iptal)
     - HandleSubmit fonksiyonunu tamamla
     - Backende post ve put (patch) request yolla
     - Description kısmı ekle
