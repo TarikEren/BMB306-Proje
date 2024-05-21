@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from "axios";
+import { redirect } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa"
 import "./css/login.css"
 import GlobalContext from '../context/GlobalContext';
@@ -9,6 +10,7 @@ function Index() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [allUsers, setAllUsers] = useState([]);
+    const [allUserIds, setAllUserIds] = useState([]);
     const { currentUserId, setCurrentUserId } = useContext(GlobalContext);
 
     useEffect(() => {
@@ -16,21 +18,22 @@ function Index() {
             await axios.get("http://localhost:8080/user")
                 .then((res) => {
                     const userData = res.data;
+                    const userIdList = userData.map(user => ({
+                        id: user.id
+                    }));
                     const userCredentials = userData.map(user => ({
                         email: user.email,
                         password: user.password
                     }));
                     setAllUsers(userCredentials);
+                    setAllUserIds(userIdList);
                     console.log(allUsers);
+                    console.log(userIdList);
                 })
                 .catch((err) => console.error(err));
         }
         getUserData();
     }, []);
-
-    useEffect(() => {
-        console.log("All Users:", allUsers);
-    }, [allUsers])
 
     function handleSubmit() {
         const user = {
@@ -38,14 +41,18 @@ function Index() {
             password
         }
         let userFound = false;
+        let userIndex = 0;
         allUsers.forEach(element => {
             if (JSON.stringify(user) === JSON.stringify(element)) {
                 userFound = true;
+                setCurrentUserId(allUserIds[userIndex]);
             }
+            userIndex += 1;
         });
         if (userFound) {
-            console.log("pass");
-            //Login isteği yolla
+            console.log("pass", user, currentUserId);
+            //Login'e istek yolla
+            redirect("/calendar");
         }
         else {
             console.log("fail");
