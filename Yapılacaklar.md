@@ -51,3 +51,4 @@
     - Description kısmı ekle
 - Label kısmını ekle
 - Sürükle bırak
+- Register confirmPassword kontrolü
