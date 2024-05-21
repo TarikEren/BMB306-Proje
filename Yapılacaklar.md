@@ -37,7 +37,7 @@
 
 ***Controllerları Modele Bağla*** ✅ (mali)
 
-##Yeniden Oluşturulacaklar
+## Yeniden Oluşturulacaklar
 - SecurityConfig.java
 - PaymentController.java
 - PaymentDetails.java
