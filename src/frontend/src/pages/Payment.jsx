@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Navbar from '../components/Navbar';
 import { FaArrowCircleRight } from "react-icons/fa";
 
 import Visa from "../assets/visa.svg";
 import MasterCard from "../assets/mastercard.svg";
+import GlobalContext from '../context/GlobalContext';
 
 function Payment() {
     const [cardNumber, setCardNumber] = useState(null);
     const [validCardNumber, setValidCardNumber] = useState(null);
     const [cardOwner, setCardOwner] = useState(null);
     const [validCardOwner, setValidCardOwner] = useState(null);
+    const {price, setPrice} = useContext(GlobalContext);
 
     const checkValidOwner = () => {
         const ownerBox = document.getElementById("card-owner");
@@ -146,10 +148,10 @@ function Payment() {
                         <h1 className='text-2xl font-semibold'>
                             Sipariş Özeti
                         </h1>
-                        <p className='text-xl'>Ara Toplam: TL</p>
-                        <p className='text-xl'>KDV: 15.99 TL</p>
+                        <p className='text-xl'>Ara Toplam: {price} TL</p>
+                        <p className='text-xl'>KDV: 16 TL</p>
                         <hr />
-                        <p className='text-2xl font-semibold'>Genel Toplam: TL</p>
+                        <p className='text-2xl font-semibold'>Genel Toplam: {price + 16} TL</p>
                         <button
                             className='p-2 rounded border w-full bg-green-400 text-white font-semibold text-lg'
                             onClick={() => {
