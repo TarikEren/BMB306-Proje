@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
@@ -19,13 +19,9 @@ public class AdminController {
         return userRepository.findAll();
     }
 
-    // Tek kullanıcı al (Kullanıcı planını değiştirmek için)
-    @GetMapping("/users/{id}")
-    public User getUserById(@PathVariable Long id) {
-        Optional<User> user = userRepository.findById(id);
-        return user.orElse(null); // Kullanıcı bulunamazsa null döner
-    }
-    
+    //Tek kullanıcı al (Kullanıcı planı değiştirmek için)
+
+
     @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable Long id) {
         userRepository.deleteById(id);
