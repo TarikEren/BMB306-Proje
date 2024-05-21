@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import GlobalContext from "../context/GlobalContext";
-//npm run dev başlatmak icin
+import axios from "axios";
+
+
 function Account() {
-  const { userName, userPassword, setUserName, setUserPassword } =
+  const { userName, userPassword, userEmail, name, surname } =
     useContext(GlobalContext);
   const [password, setPassword] = useState(null);
   const [email, setEmail] = useState(null);
@@ -13,7 +15,7 @@ function Account() {
   const [oldPassword, setOldPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
 
-  function paswordtest() {
+  function passwordTest() {
     if (
       password === confirmPassword &&
       password.length >= 8 &&
@@ -22,7 +24,21 @@ function Account() {
       console.log("kabul edildi");
     } else console.log("red edildi");
   }
-  function dataGonder() {}
+  async function dataGonder() {
+    if (!passwordTest) return null;
+    const user = {
+      username: username ? username : userName,
+      password: password ? password : userPassword,
+      email: email ? email : userEmail,
+      name: ad ? ad : name,
+      surname: soyAd ? soyAd : surname,
+    }
+    const sendUser = await axios.post("http://localhost:8080/user", user)
+    .then((res) => {
+      console.log(res.status); //Kontrol için
+    })
+    .catch((err) => console.error(err));
+  }
 
   return (
     <>
@@ -126,7 +142,7 @@ function Account() {
               <button
                 className="transition ease-in-out drop-shadow-lg px-11 text-2xl m-4 rounded-full outline outline-offset-2 outline-blue-500 hover:scale-110 "
                 onClick={() => {
-                  paswordtest();
+                  passwordTest();
                 }}
               >
                 Save Changes
@@ -148,9 +164,9 @@ function Account() {
             >
               Admin Paneli
             </a>
-            
-              
-            
+
+
+
           </div>
         </div>
       </div>
