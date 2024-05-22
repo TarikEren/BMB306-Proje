@@ -5,7 +5,7 @@ import GlobalContext from "../context/GlobalContext";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 export default function CalendarHeader() {
-  const { monthIndex, setMonthIndex, userIsPremium }
+  const { monthIndex, setMonthIndex, accountType }
   = useContext(GlobalContext);
   function handlePrevMonth() {
     setMonthIndex(monthIndex - 1);
@@ -50,7 +50,7 @@ export default function CalendarHeader() {
         </h2>
       </div>
       <div className="flex flex-row items-center space-x-7">
-        {userIsPremium ? (
+        {accountType === "premium" ? (
           <a href="/plans" className="p-3 border rounded">Plans</a>
         ) : (
           <a href="/plans" className="p-3 border rounded">Buy Premium</a>
