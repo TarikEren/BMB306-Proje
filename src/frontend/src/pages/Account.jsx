@@ -118,7 +118,7 @@ function Account() {
                   Sifre değiştirme
                 </h1>
               </div>
-              <div className="drop-shadow-lg m-2 text-lg space-x-10">
+              <div className="drop-shadow-lg  text-lg space-x-10">
                 <input
                   className="rounded w-9/12 p-3 my-4 shadow-inner"
                   type="password"
@@ -128,7 +128,7 @@ function Account() {
                   onChange={(e) => setOldPassword(e.target.value)}
                 />
               </div>
-              <div className="drop-shadow-lg m-4 text-lg space-x-10">
+              <div className="drop-shadow-lg my-5  text-lg space-x-10">
                 <input
                   className="rounded w-4/12 p-3 shadow-inner"
                   type="password"
@@ -147,7 +147,7 @@ function Account() {
                 />
               </div>
               <button
-                className="transition ease-in-out drop-shadow-lg px-11 text-2xl m-4 rounded-full outline outline-offset-2 outline-blue-500 hover:scale-110 "
+                className="text-2xl my-6 py-2 px-11 drop-shadow-lg transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2] "
                 onClick={() => {
                   passwordTest();
                 }}
@@ -160,10 +160,10 @@ function Account() {
             {" "}
             {/* <p className="mb-3">Premium admin veya free user bilgisi</p> */}
             {(!userIsPremium&&!userIsAdmin)&& <a
-              className="px-11 drop-shadow-lg transition ease-in-out delay-150 bg-blue-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]"
+              className="text-2xl px-11 drop-shadow-lg transition ease-in-out delay-150 bg-blue-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]"
               href="/Plans"
             >
-              premiuma gec
+              Vip ol
             </a>}
             
             {userIsAdmin && <a
