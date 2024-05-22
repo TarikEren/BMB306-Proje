@@ -50,7 +50,7 @@ function Account() {
       <Navbar />
 
       <div className="h-screen w-screen bg-gradient-to-r from-teal-300 to-blue-400 ">
-        <div className="drop-shadow-lg  flex-auto mx-[25.5rem] rounded h-screen">
+        <div className="drop-shadow-lg flex-auto mx-[25.5rem] h-screen">
           <div>
             <h1 className="flex-auto inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight ">
               Hesap
@@ -72,8 +72,10 @@ function Account() {
                   placeholder="Kullanıcı Adı"
                   required
                   name="username"
-                  onChange={(e) => setUsername(e.target.value)}
-                />
+                  onChange={(e) => setUsername(e.target.value)} 
+              
+                /> 
+
               </div>
               <div className="drop-shadow-lg m-3 text-lg py-3">
                 <input
@@ -111,12 +113,12 @@ function Account() {
               </button>
             </div>
             <div>
-              <div className="pl-4">
+              <div className="pl-4 m-2">
                 <h1 className="font-mono inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight">
                   Sifre değiştirme
                 </h1>
               </div>
-              <div className="drop-shadow-lg m-4 text-lg space-x-10">
+              <div className="drop-shadow-lg m-2 text-lg space-x-10">
                 <input
                   className="rounded w-9/12 p-3 my-4 shadow-inner"
                   type="password"
@@ -136,7 +138,7 @@ function Account() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <input
-                  className="rounded w-4/12 p-3 shadow-inner"
+                  className="rounded w-4/12 p-3  shadow-inner"
                   type="password"
                   placeholder="Tekrar Sifre"
                   required
