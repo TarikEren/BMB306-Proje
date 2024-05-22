@@ -65,7 +65,7 @@ export default function ContextWrapper(props) {
       accountType: "admin"
     },
     {
-      email: "normal@kullanıcı.com",
+      email: "normal@kullanici.com",
       username: "normal",
       password: "123",
       name: "normal",
@@ -73,7 +73,7 @@ export default function ContextWrapper(props) {
       accountType: "free"
     },
     {
-      email: "vip@kullanıcı.com",
+      email: "vip@kullanici.com",
       username: "vip",
       password: "123",
       name: "normal",
