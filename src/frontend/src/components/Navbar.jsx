@@ -18,22 +18,12 @@ function Navbar() {
                     <li className='p-2'>
                         <a href="/plans" className='p-3 border rounded'>{userIsPremium && userLoggedIn ? ("Plans") : ("Purchase")}</a>
                     </li>
-                    {userLoggedIn ? (
-                        <>
-                            <li className='p-2'>
-                                <a href="/calendar" className='p-3 border rounded'>Calendar</a>
-                            </li>
-                            <li className='p-2'>
-                                <a href="/account" className='p-3 border rounded'>Account</a>
-                            </li>
-                        </>
-                    ) : (
-                        <>
-                            <li className='p-2'>
-                                <a href="/register" className='p-3 border rounded'>Register</a>
-                            </li>
-                        </>
-                    )}
+                    <li className='p-2'>
+                        <a href="/calendar" className='p-3 border rounded'>Calendar</a>
+                    </li>
+                    <li className='p-2'>
+                        <a href="/account" className='p-3 border rounded'>Account</a>
+                    </li>
                 </div>
             </ul>
         </nav>

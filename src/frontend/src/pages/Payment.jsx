@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-
+import { useNavigate } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import { FaArrowCircleRight } from "react-icons/fa";
 
@@ -12,9 +12,10 @@ function Payment() {
     const [validCardNumber, setValidCardNumber] = useState(null);
     const [cardOwner, setCardOwner] = useState(null);
     const [validCardOwner, setValidCardOwner] = useState(null);
-    const {price} = useContext(GlobalContext);
+    const { price, setUserIsPremium } = useContext(GlobalContext);
     const kdv = price - (price / 1.18);
-    
+    let navigate = useNavigate();
+
     const checkValidOwner = () => {
         const ownerBox = document.getElementById("card-owner");
         let hasNoDigits = !/[^a-z]/i.test(cardOwner);
@@ -47,6 +48,8 @@ function Payment() {
     function sendPayment() {
         if (checkValidity()) {
             //Sorun yoksa kullanıcıyı premium yap
+            setUserIsPremium(true);
+            navigate("/calendar");
             return true;
         }
         return false;
@@ -94,7 +97,7 @@ function Payment() {
                                     </h1>
                                 </label>
                                 <div className="flex flex-col w-full">
-                                    <input type="text" name="" id="card-owner" className="border rounded p-3 ml-6" onChange={(e) => setCardOwner(e.target.value)}/>
+                                    <input type="text" name="" id="card-owner" className="border rounded p-3 ml-6" onChange={(e) => setCardOwner(e.target.value)} />
                                     {validCardOwner === false && (
                                         <div className="">
                                             <p className='text-gray-500'>Geçersiz kart sahibi</p>
@@ -140,7 +143,7 @@ function Payment() {
                                             CVC
                                         </h1>
                                     </label>
-                                    <input type="text" className="border rounded p-3" onChange={(e) => setCvc(e.target.value)} />
+                                    <input type="text" className="border rounded p-3" />
                                 </div>
                             </div>
                         </div>
@@ -149,7 +152,7 @@ function Payment() {
                         <h1 className='text-2xl font-semibold'>
                             Sipariş Özeti
                         </h1>
-                        <p className='text-xl'>Ara Toplam: {(price-kdv).toFixed(2)} TL</p>
+                        <p className='text-xl'>Ara Toplam: {(price - kdv).toFixed(2)} TL</p>
                         <p className='text-xl'>KDV: {(kdv).toFixed(2)} TL</p>
                         <hr />
                         <p className='text-2xl font-semibold'>Genel Toplam: {price} TL</p>
