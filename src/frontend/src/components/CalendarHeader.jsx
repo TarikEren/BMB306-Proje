@@ -53,7 +53,7 @@ export default function CalendarHeader() {
         {userIsPremium ? (
           <a href="/plans" className="p-3 border rounded">Plans</a>
         ) : (
-          <a href="/payment" className="p-3 border rounded">Buy Premium</a>
+          <a href="/plans" className="p-3 border rounded">Buy Premium</a>
         )}
         <a href="/account" className="p-3 border rounded">Account</a>
       </div>
