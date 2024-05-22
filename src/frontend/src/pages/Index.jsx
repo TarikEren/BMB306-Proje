@@ -11,7 +11,7 @@ function Index() {
     const [password, setPassword] = useState("");
     const [allUsers, setAllUsers] = useState([]);
     const [allUserInfo, setAllUserInfo] = useState([]);
-    const { currentUser, setCurrentUser } = useContext(GlobalContext);
+    const { currentUser, setCurrentUser, userLoggedIn, setUserLoggedIn } = useContext(GlobalContext);
 
     useEffect(() => {
         const getUserData = async () => {
@@ -53,7 +53,7 @@ function Index() {
             userIndex += 1;
         });
         if (userFound) {
-            console.log("pass", user, currentUser);
+            setUserLoggedIn(true);
             //Login'e istek yolla
             redirect("/calendar");
         }
@@ -63,9 +63,6 @@ function Index() {
         }
     }
 
-    useEffect(() => {
-        console.log(currentUser);
-    }, [currentUser]);
     return (
         <div className='bodyy bg-gradient-to-r from-teal-300 to-blue-400'>
             <div className="wrapper">
