@@ -41,6 +41,7 @@ function Admin() {
             surname: "def",
             username: "vipuser1asdfg"
         },
+        
     ]
     // Veritabanı ile kullanım için yorum satılarını kaldır,.
     // const [allUsers, setAllUsers] = useState([]);
@@ -72,9 +73,9 @@ function Admin() {
   return (
       <React.Fragment>
           <Navbar />
-          <div className="h-screen w-screen p-5">
-              <table className="table-auto w-full">
-                  <thead>
+          <div className="relative overflow-x-auto shadow-md sm:rounded-lg h-screen w-screen p-5">
+              <table className="w-full text-sm text-left rtl:text-right table-auto w-full">
+                  <thead className="text-xl text-white uppercase bg-blue-500 border-b border-blue-600 dark:text-white">
                       <tr>
                           <th>ID</th>
                           <th>Username</th>
@@ -85,10 +86,10 @@ function Admin() {
                           <th>Actions</th>
                       </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="text-base">
                       {allUsers.map(user => (
-                          <tr key={user.id}>
-                              <td>{user.id}</td>
+                          <tr className='border' key={user.id}>
+                              <td >{user.id}</td>
                               <td>{user.username}</td>
                               <td>{user.name}</td>
                               <td>{user.surname}</td>
