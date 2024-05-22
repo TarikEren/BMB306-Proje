@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaUser, FaLock } from "react-icons/fa"
+import { useNavigate } from "react-router-dom";
 import "./css/login.css"
-import axios from "axios";
+import GlobalContext from '../context/GlobalContext';
 
 
 function Register() {
@@ -11,34 +12,39 @@ function Register() {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
-    
-    const getAllUsers = async () => {
-        const users = await axios.get("http://localhost:8080/user")
-            .then((res) => console.log(res.data))
-            .catch((err) => console.error(err));
-    }
 
+    let navigate = useNavigate();
+    let allUsers = JSON.parse(localStorage.getItem("accounts"));
+    let allEmails = allUsers.map(user => ({
+        email: user.email
+    }));
 
-    const sendUser = async () => {
-        await axios.post("http://localhost:8080/user", {
-            accountType: "free",
-            email: email,
+    const handleSubmit = () => {
+        const newUser = {
             username: username,
             password: password,
+            email: email,
             name: name,
-            surname: surname
-        })
-            .then((res) => console.log(res.data))
-            .catch((err) => console.log(err));
-    }
+            surname: surname,
+            accountType: "free"
+        }
+        let userFound = false;
+        allEmails.forEach(element => {
+            if (email === element.email) {
+                userFound = true;
+            }
+        });
+        if (userFound) {
+            console.log("fail");
+        } 
+        else {
+            allUsers.push(newUser);
+            localStorage.setItem("accounts", JSON.stringify(allUsers));
+            console.log(localStorage);
+            navigate("/");
+        }
+    };
 
-    function handleRegister() {
-        sendUser();
-    }
-
-    useEffect(() => {
-        getAllUsers();
-    }, [])
     return (
         <div className='bodyy bg-gradient-to-r from-teal-300 to-blue-400'>
             <div className="wrapper">
@@ -64,7 +70,7 @@ function Register() {
                     <div className="input-box">
                         <input type="password" placeholder='Re-enter Password' required onChange={(e) => setConfirmPassword(e.target.value)} /><FaLock className='icon' />
                     </div>
-                    <button type="button" className='btn' onClick={() => handleRegister()}>Save</button>
+                    <button type="button" className='btn' onClick={handleSubmit}>Save</button>
 
                 </form>
             </div>
