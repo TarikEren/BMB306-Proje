@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import GlobalContext from "../context/GlobalContext";
-import { FaCheck, FaBookmark } from "react-icons/fa";
+import { FaRegTrashCan, FaCheck, FaRegClock, FaRegClipboard } from "react-icons/fa6";
+import { FaBookmark } from "react-icons/fa";
+import { TfiClose } from "react-icons/tfi";
 
 const labelsClasses = [
   "indigo",
@@ -15,6 +17,7 @@ export default function EventModal() {
   const {
     setShowEventModal,
     daySelected,
+    dispatchCalEvent,
     selectedEvent,
   } = useContext(GlobalContext);
 
@@ -30,149 +33,107 @@ export default function EventModal() {
       : labelsClasses[0]
   );
 
-  async function postEvent(event) {
-    //TODO: Create event
-  }
-
-  async function patchEvent(event) {
-    //TODO: Get event and patch it
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
-    //TODO: Send the event to the controller
+    const calendarEvent = {
+      title,
+      description,
+      label: selectedLabel,
+      day: daySelected.valueOf(),
+      id: selectedEvent ? selectedEvent.id : Date.now(),
+    };
+    if (selectedEvent) {
+      dispatchCalEvent({ type: "update", payload: calendarEvent });
+    } else {
+      dispatchCalEvent({ type: "push", payload: calendarEvent });
+    }
+
+    setShowEventModal(false);
   }
   return (
-    <div className='h-screen w-full fixed left-0 top-0 flex justify-center items-center'>
-      <form className='bg-white rounded-lg shadow-2xl w-1/4'>
-        <header className='bg-gray-100 px-4 py-2 flex justify-end items-center'>
-          <button onClick={() => { setShowEventModal(false) }} className='p-1'>
-            <span className="text-gray-400 font-bold">
-              X
-            </span>
-          </button>
+    <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
+      <form className="bg-white rounded-lg shadow-2xl w-1/4">
+        <header className="bg-gray-100 px-4 py-3 flex justify-end items-center">
+          <div>
+            <button onClick={() => setShowEventModal(false)}>
+              <span className="material-icons-outlined text-gray-400 text-2xl">
+                <TfiClose />
+              </span>
+            </button>
+          </div>
         </header>
         <div className="p-3">
-          <div className="flex flex-col">
-
-            {/* Başlık Kısmı */}
-            <input type="text" name="title" placeholder='Başlık'
+          <div className="grid grid-cols-1/5 items-end gap-y-7">
+            <div></div>
+            <input
+              type="text"
+              name="title"
+              placeholder="Add title"
               value={title}
-              onChange={(e) => { setTitle(e.target.value) }}
               required
-              className='pt-3 border-0 text-gray-600 text-xl font-semibold pb-2 w-full focus:outline-none focus:ring-0 focus:border-blue-500'
+              className="pt-3 border-0 text-gray-600 text-xl font-semibold pb-2 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500"
+              onChange={(e) => setTitle(e.target.value)}
             />
-
-            {/* Açıklama Kısmı */}
-            <input type="text" name="title" placeholder='Açıklama'
+            <span className="material-icons-outlined text-gray-600 text-xl">
+              <FaRegClock />
+            </span>
+            <p>{daySelected.format("dddd, MMMM DD")}</p>
+            <span className="material-icons-outlined text-gray-600 text-xl">
+              <FaRegClipboard/>
+            </span>
+            <input
+              type="text"
+              name="description"
+              placeholder="Add a description"
               value={description}
-              onChange={(e) => { setDescription(e.target.value) }}
               required
-              className='pt-3 border-0 text-gray-600 text-xl font-semibold pb-2 w-full focus:outline-none focus:ring-0 focus:border-blue-500'
+              className="pt-3 border-0 text-gray-600 pb-2 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500"
+              onChange={(e) => setDescription(e.target.value)}
             />
-
-            {/* Başlangıç Tarihi Seçimi*/}
-            <div className="flex flex-row items-center space-x-5">
-              <span className="text-gray-400 mt-4">
-                Başlangıç
-              </span>
-              <div className="flex flex-row">
-                <button className='mt-4 p-1 hover:bg-gray-400 hover:text-white rounded'>
-                  <span>
-                    {daySelected.format("dddd, MMMM, DD")}
-                  </span>
-                </button>
-              </div>
-            </div>
-
-            {/* Bitiş Tarihi Seçimi */}
-            <div className="flex flex-row items-center space-x-5">
-              <span className="text-gray-400 mt-4">
-                Bitiş
-              </span>
-              <div className="flex flex-row">
-                <button className='mt-4 p-1 hover:bg-gray-400 hover:text-white rounded'>
-                  <span>
-                    {daySelected.format("dddd, MMMM, DD")}
-                  </span>
-                </button>
-              </div>
-            </div>
-
-            {/* Etiket seçme kısmı - Kaldırılabilir veri tabanında karşılığı yok */}
-            <div className="flex flex-row space-x-10 mt-5">
-              <span className='text-gray-400 mt-1'>
-                <FaBookmark className='text-blue-500' />
-              </span>
-              <div className="flex gap-x-2">
+            <span className="material-icons-outlined text-blue-500 text-xl">
+              <FaBookmark />
+            </span>
+            <div className="flex gap-x-2">
+              {labelsClasses.map((lblClass, i) => (
                 <span
-                  onClick={() => setSelectedLabel("indigo")}
-                  className={`bg-indigo-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
-                  {selectedLabel === "indigo" &&
-                    <span className='text-white text-sm'>
+                  key={i}
+                  onClick={() => setSelectedLabel(lblClass)}
+                  className={`bg-${lblClass}-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}
+                >
+                  {selectedLabel === lblClass && (
+                    <span className="material-icons-outlined text-white text-sm">
                       <FaCheck />
                     </span>
-                  }
+                  )}
                 </span>
-                <span
-                  onClick={() => setSelectedLabel("green")}
-                  className={`bg-green-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
-                  {selectedLabel === "green" &&
-                    <span className='text-white text-sm'>
-                      <FaCheck />
-                    </span>
-                  }
-                </span>
-                <span
-                  onClick={() => setSelectedLabel("gray")}
-                  className={`bg-gray-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
-                  {selectedLabel === "gray" &&
-                    <span className='text-white text-sm'>
-                      <FaCheck />
-                    </span>
-                  }
-                </span>
-                <span
-                  onClick={() => setSelectedLabel("blue")}
-                  className={`bg-blue-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
-                  {selectedLabel === "blue" &&
-                    <span className='text-white text-sm'>
-                      <FaCheck />
-                    </span>
-                  }
-                </span>
-                <span
-                  onClick={() => setSelectedLabel("red")}
-                  className={`bg-red-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
-                  {selectedLabel === "red" &&
-                    <span className='text-white text-sm'>
-                      <FaCheck />
-                    </span>
-                  }
-                </span>
-                <span
-                  onClick={() => setSelectedLabel("purple")}
-                  className={`bg-purple-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}>
-                  {selectedLabel === "purple" &&
-                    <span className='text-white text-sm'>
-                      <FaCheck />
-                    </span>
-                  }
-                </span>
-              </div>
+              ))}
             </div>
           </div>
         </div>
-        
-        {/* Yükle */}
-        <footer className='flex justify-end border-t p-3 mt-5'>
-          <button type="submit"
-            className='bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white'>
+        <footer className="flex justify-between border-t p-3 mt-5">
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white"
+          >
             Save
           </button>
+          {selectedEvent && (
+            <button
+              onClick={() => {
+                dispatchCalEvent({
+                  type: "delete",
+                  payload: selectedEvent,
+                });
+                setShowEventModal(false);
+              }}
+              className="material-icons-outlined rounded px-6 py-2 cursor-pointer text-2xl bg-red-500 text-white"
+            >
+              <FaRegTrashCan />
+            </button>
+          )}
         </footer>
       </form>
     </div>
   );
-
 }
