@@ -16,7 +16,7 @@ function Plans() {
             <div class="card h-9/12 text-2xl">
               <div class="card-body ">
                 <h5 class="card-title">Vip Paketi</h5>
-                <p class="card-text">- Sınırsız randevu hakkıı </p>
+                <p class="card-text">- Sınırsız randevu hakkı </p>
                 <p class="card-text">- 7/24 Destek hattı</p>
                 <p class="card-text">-  35 TL </p>
                 <br></br>
