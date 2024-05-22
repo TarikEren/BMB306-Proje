@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa"
 import "./css/login.css"
@@ -18,10 +17,6 @@ function Index() {
         password: user.password
     }));
     let userIndex = 0;
-    
-    const redirect = () => {
-        navigate("/calendar");
-    }
 
     const handleSubmit = () => {
         const user = {
@@ -51,7 +46,7 @@ function Index() {
     useEffect(() => {
         if (currentUser && userLoggedIn) {
             console.log("Account type: ", accountType);
-            redirect();
+            navigate("/calendar");
         }
         console.log(currentUser, userLoggedIn, accountType);
     }, [currentUser, userLoggedIn, accountType]);
