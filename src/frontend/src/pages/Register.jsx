@@ -40,7 +40,7 @@ function Register() {
         getAllUsers();
     }, [])
     return (
-        <div className='bodyy'>
+        <div className='bodyy bg-gradient-to-r from-teal-300 to-blue-400'>
             <div className="wrapper">
                 <form action="">
                     <h1>Register</h1>
