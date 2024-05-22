@@ -54,7 +54,7 @@ function Account() {
 
       <div className="h-screen w-screen bg-gradient-to-r from-teal-300 to-blue-400 ">
         <div className="drop-shadow-lg flex-auto mx-[25.5rem] h-screen">
-          <div>
+          <div className="flex flex-col lg:flex-row">
             <h1 className="flex-auto inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight ">
               Hesap
             </h1>
@@ -67,9 +67,9 @@ function Account() {
                   Kullanıcı Bilgisi
                 </h2>
               </div>
-              <div className="drop-shadow-lg m-3 text-lg py-3">
+              <div className="flex flex-col lg:flex-row drop-shadow-lg m-3 text-lg py-3">
                 <input
-                  className="opacity-75 rounded w-9/12 p-3 shadow-inner"
+                  className="flex flex-col lg:flex-row opacity-75 rounded w-9/12 p-3 shadow-inner"
                   type="text"
                   value={userName && userName}
                   placeholder="Kullanıcı Adı"
@@ -80,9 +80,9 @@ function Account() {
                 /> 
 
               </div>
-              <div className="drop-shadow-lg m-3 text-lg py-3">
+              <div className="flex flex-col lg:flex-row drop-shadow-lg m-3 text-lg py-3">
                 <input
-                  className="opacity-75 rounded w-9/12 p-3 shadow-inner"
+                  className="flex flex-col lg:flex-row opacity-75 rounded w-9/12 p-3 shadow-inner"
                   type="email"
                   value={email ? email : " "}
                   placeholder="E-mail"
@@ -91,9 +91,9 @@ function Account() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div className=" drop-shadow-lg m-3 py-3 space-x-10 text-lg">
+              <div className="flex flex-col lg:flex-row drop-shadow-lg m-3 py-3 space-x-10 text-lg">
                 <input
-                  className="opacity-75 rounded w-4/12 p-3 shadow-inner"
+                  className="flex flex-col lg:flex-row opacity-75 rounded w-4/12 p-3 shadow-inner"
                   type="text"
                   value={ad ? ad : " "}
                   placeholder="İsim"
@@ -102,7 +102,7 @@ function Account() {
                   onChange={(e) => setName(e.target.value)}
                 />
                 <input
-                  className="opacity-75 rounded w-4/12 p-3 shadow-inner"
+                  className="flex flex-col lg:flex-row opacity-75 rounded w-4/12 p-3 shadow-inner"
                   type="text"
                   value={soyAd ? soyAd : " "}
                   placeholder="Soyisim"
@@ -111,13 +111,13 @@ function Account() {
                   onChange={(e) => setSurname(e.target.value)}
                 />
               </div>
-              <button className="drop-shadow-xl m-4 px-11 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2] text-2xl ">
+              <button className="flex flex-col lg:flex-row drop-shadow-xl m-4 px-11 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2] text-2xl ">
                 Kaydet
               </button>
             </div>
             <div>
-              <div className="pl-4 m-2">
-                <h1 className="font-mono inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight">
+              <div className="pl-4 m-2 flex flex-col lg:flex-row">
+                <h1 className="flex flex-col lg:flex-row font-mono inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight">
                   Sifre değiştirme
                 </h1>
               </div>
@@ -150,7 +150,7 @@ function Account() {
                 />
               </div>
               <button
-                className="text-2xl my-6 py-2 px-11 drop-shadow-lg transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2] "
+                className="flex flex-col lg:flex-row text-2xl my-10 py-2 px-11 drop-shadow-lg transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2] "
                 onClick={() => {
                   passwordTest();
                 }}

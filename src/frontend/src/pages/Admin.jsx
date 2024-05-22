@@ -5,42 +5,30 @@ import Navbar from '../components/Navbar';
 function Admin() {
 
     const allUsers = [
-        {
-            accountType: "free",
-            email: "abc@def.com",
-            id: 1,
-            name: "abc",
-            password: "123",
-            surname: "def",
-            username: "user"
-        },
-        {
-            accountType: "free",
-            email: "efg@def.com",
-            id: 2,
-            name: "efg",
-            password: "123",
-            surname: "def",
-            username: "vipuser"
-        },
-        {
-            accountType: "premium",
-            email: "abcd@def.com",
-            id: 3,
-            name: "abcd",
-            password: "123abc",
-            surname: "def",
-            username: "vipuser1"
-        },
-        {
-            accountType: "premium",
-            email: "abcdxyz@def.com",
-            id: 4,
-            name: "abcd",
-            password: "123abc",
-            surname: "def",
-            username: "vipuser1asdfg"
-        },
+      {
+        email: "admin@admin.com",
+        username: "admin",
+        password: "admin",
+        name: "",
+        surname: "",
+        accountType: "admin"
+      },
+      {
+        email: "normal@kullanıcı.com",
+        username: "normal",
+        password: "123",
+        name: "normal",
+        surname: "normal",
+        accountType: "free"
+      },
+      {
+        email: "vip@kullanıcı.com",
+        username: "vip",
+        password: "123",
+        name: "normal",
+        surname: "normal",
+        accountType: "premium"
+      }
         
     ]
     // Veritabanı ile kullanım için yorum satılarını kaldır,.
