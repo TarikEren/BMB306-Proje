@@ -5,15 +5,15 @@ import Sidebar from "../components/Sidebar";
 import Month from "../components/Month";
 import GlobalContext from "../context/GlobalContext";
 import EventModal from "../components/EventModal";
-import axios from "axios";
 
 function Calendar() {
     const [currentMonth, setCurrentMonth] = useState(getMonth());
-    const {monthIndex, showEventModal} = useContext(GlobalContext);
-
+    const {monthIndex, showEventModal, accountType} = useContext(GlobalContext);
+    
     useEffect(() => {
         setCurrentMonth(getMonth(monthIndex));
-    }, [monthIndex]);
+        console.log("Account Type: ", accountType);
+    }, [monthIndex, accountType]);
 
 
     return (
