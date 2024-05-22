@@ -42,7 +42,9 @@ const GlobalContext = React.createContext({
   userIsAdmin: false,
   setUserIsAdmin: () => {},
   currentUser: [],
-  setCurrentUser: () => {}
+  setCurrentUser: () => {},
+  allUsers: [],
+  setAllUsers: () => {}
 });
 
 export default GlobalContext;

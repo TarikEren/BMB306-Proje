@@ -55,6 +55,32 @@ export default function ContextWrapper(props) {
   const [surname, setSurname] = useState(null);
   const [userIsAdmin, setUserIsAdmin] = useState(false);
   const [currentUser, setCurrentUser] = useState([]);
+  const [allUsers, setAllUsers] = useState([
+    {
+      email: "admin@admin.com",
+      username: "admin",
+      password: "admin",
+      name: "",
+      surname: "",
+      accountType: "admin"
+    },
+    {
+      email: "normal@kullanıcı.com",
+      username: "normal",
+      password: "123",
+      name: "normal",
+      surname: "normal",
+      accountType: "free"
+    },
+    {
+      email: "vip@kullanıcı.com",
+      username: "vip",
+      password: "123",
+      name: "normal",
+      surname: "normal",
+      accountType: "premium"
+    },
+  ]);
 
   const filteredEvents = useMemo(() => {
     return savedEvents.filter((evt) =>
@@ -68,6 +94,10 @@ export default function ContextWrapper(props) {
   useEffect(() => {
     localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
   }, [savedEvents]);
+
+  useEffect(() => {
+    localStorage.setItem("accounts", JSON.stringify(allUsers));
+  }, [allUsers]);
 
   useEffect(() => {
     setLabels((prevLabels) => {
@@ -149,6 +179,8 @@ export default function ContextWrapper(props) {
         setUserIsAdmin,
         currentUser,
         setCurrentUser,
+        allUsers,
+        setAllUsers
       }}
     >
       {props.children}
