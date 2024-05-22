@@ -55,6 +55,7 @@ function Index() {
         if (userFound) {
             setUserLoggedIn(true);
             //Login'e istek yolla
+            console.log("success");
             redirect("/calendar");
         }
         else {
