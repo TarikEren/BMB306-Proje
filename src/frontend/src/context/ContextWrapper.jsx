@@ -26,7 +26,7 @@ export default function ContextWrapper(props) {
     const [name, setName] = useState(null);
     const [surname, setSurname] = useState(null);
     const [userIsAdmin, setUserIsAdmin] = useState(false);
-    const [currentUserId, setCurrentUserId] = useState(null);
+    const [currentUser, setCurrentUser] = useState([]);
     
 
     const filteredEvents = useMemo(() => {
@@ -96,8 +96,8 @@ export default function ContextWrapper(props) {
                 surname,
                 userIsAdmin,
                 setUserIsAdmin,
-                currentUserId,
-                setCurrentUserId
+                currentUser,
+                setCurrentUser,
             }}
         >
             {props.children}

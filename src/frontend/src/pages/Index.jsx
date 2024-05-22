@@ -10,8 +10,8 @@ function Index() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [allUsers, setAllUsers] = useState([]);
-    const [allUserIds, setAllUserIds] = useState([]);
-    const { currentUserId, setCurrentUserId } = useContext(GlobalContext);
+    const [allUserInfo, setAllUserInfo] = useState([]);
+    const { currentUser, setCurrentUser } = useContext(GlobalContext);
 
     useEffect(() => {
         const getUserData = async () => {
@@ -19,14 +19,17 @@ function Index() {
                 .then((res) => {
                     const userData = res.data;
                     const userIdList = userData.map(user => ({
-                        id: user.id
+                        id: user.id,
+                        email: user.email,
+                        password: password,
+
                     }));
                     const userCredentials = userData.map(user => ({
                         email: user.email,
                         password: user.password
                     }));
                     setAllUsers(userCredentials);
-                    setAllUserIds(userIdList);
+                    setAllUserInfo(res.data);
                     console.log(allUsers);
                     console.log(userIdList);
                 })
@@ -45,12 +48,12 @@ function Index() {
         allUsers.forEach(element => {
             if (JSON.stringify(user) === JSON.stringify(element)) {
                 userFound = true;
-                setCurrentUserId(allUserIds[userIndex]);
+                setCurrentUser(allUserInfo[userIndex]);
             }
             userIndex += 1;
         });
         if (userFound) {
-            console.log("pass", user, currentUserId);
+            console.log("pass", user, currentUser);
             //Login'e istek yolla
             redirect("/calendar");
         }
@@ -60,6 +63,9 @@ function Index() {
         }
     }
 
+    useEffect(() => {
+        console.log(currentUser);
+    }, [currentUser]);
     return (
         <div className='bodyy bg-gradient-to-r from-teal-300 to-blue-400'>
             <div className="wrapper">

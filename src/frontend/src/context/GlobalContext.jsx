@@ -41,8 +41,8 @@ const GlobalContext = React.createContext({
     setPrice: () => {},
     userIsAdmin: false,
     setUserIsAdmin: () => {},
-    currentUserId: null,
-    setCurrentUserId: () => {}
+    currentUser: [],
+    setCurrentUser: () => {}
 });
 
 export default GlobalContext;
