@@ -9,16 +9,16 @@ function Index() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [allUsers, setAllUsers] = useState([]);
+    const [AllEmailsPasswords, setAllEmailsPasswords] = useState([]);
     const [allUserInfo, setAllUserInfo] = useState([]);
-    const { currentUser, setCurrentUser, userLoggedIn, setUserLoggedIn } = useContext(GlobalContext);
+    const { setCurrentUser, setUserLoggedIn } = useContext(GlobalContext);
 
     useEffect(() => {
         const getUserData = async () => {
             await axios.get("http://localhost:8080/user")
                 .then((res) => {
                     const userData = res.data;
-                    const userIdList = userData.map(user => ({
+                    const userInfo = userData.map(user => ({
                         id: user.id,
                         email: user.email,
                         password: password,
@@ -28,10 +28,11 @@ function Index() {
                         email: user.email,
                         password: user.password
                     }));
-                    setAllUsers(userCredentials);
+                    setAllEmailsPasswords(userCredentials);
                     setAllUserInfo(res.data);
-                    console.log(allUsers);
-                    console.log(userIdList);
+                    console.log("All User Data: ", res.data);
+                    console.log("All emails and passwords: ", AllEmailsPasswords);
+                    console.log("All User Info: ", userInfo);
                 })
                 .catch((err) => console.error(err));
         }
@@ -45,7 +46,7 @@ function Index() {
         }
         let userFound = false;
         let userIndex = 0;
-        allUsers.forEach(element => {
+        AllEmailsPasswords.forEach(element => {
             if (JSON.stringify(user) === JSON.stringify(element)) {
                 userFound = true;
                 setCurrentUser(allUserInfo[userIndex]);
@@ -54,13 +55,13 @@ function Index() {
         });
         if (userFound) {
             setUserLoggedIn(true);
-            //Login'e istek yolla
-            console.log("success");
+            //TODO: Login'e istek yolla
+            console.log("User Details: ", user);
             redirect("/calendar");
         }
         else {
             console.log("fail");
-            //Hatalı olan inputu göster düzelttir.
+            //TODO: Email kontrol ettir.
         }
     }
 
