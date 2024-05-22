@@ -45,10 +45,8 @@ function Index() {
 
     useEffect(() => {
         if (currentUser && userLoggedIn) {
-            console.log("Account type: ", accountType);
             navigate("/calendar");
         }
-        console.log(currentUser, userLoggedIn, accountType);
     }, [currentUser, userLoggedIn, accountType]);
 
     // useEffect(() => {
