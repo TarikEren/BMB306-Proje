@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import Navbar from '../components/Navbar';
 
-function Index() {
+function Admin() {
 
     const allUsers = [
         {
@@ -53,20 +53,62 @@ function Index() {
     //             })
     //             .catch((err) => console.error(err));
     //     }
-    //     getUserData();
+    //    getUserData();
     // }, []);
     // useEffect(() => {
     //     console.log(allUsers);
     // }, [allUsers]);
+     
+  const handleDelete = async (id) => {
+      await axios.delete(`http://localhost:8080/user/${id}`)
+          .then((res) => {
+              if (res.status === 200) {
+                  setAllUsers(allUsers.filter(user => user.id !== id));
+              }
+          })
+          .catch((err) => console.error(err));
+  };
 
-    return (
-        <React.Fragment>
-            <Navbar />
-            <div className="h-screen w-screen">
-                Admin dashboard
-            </div>
-        </React.Fragment>
-    );
+  return (
+      <React.Fragment>
+          <Navbar />
+          <div className="h-screen w-screen p-5">
+              <table className="table-auto w-full">
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Username</th>
+                          <th>Name</th>
+                          <th>Surname</th>
+                          <th>Email</th>
+                          <th>Account Type</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {allUsers.map(user => (
+                          <tr key={user.id}>
+                              <td>{user.id}</td>
+                              <td>{user.username}</td>
+                              <td>{user.name}</td>
+                              <td>{user.surname}</td>
+                              <td>{user.email}</td>
+                              <td>{user.accountType}</td>
+                              <td>
+                                  <button
+                                      onClick={() => handleDelete(user.id)}
+                                      className="bg-red-500 text-white p-2"
+                                  >
+                                      Delete
+                                  </button>
+                              </td>
+                          </tr>
+                      ))}
+                  </tbody>
+              </table>
+          </div>
+      </React.Fragment>
+  );
 }
 
-export default Index;
+export default Admin;
