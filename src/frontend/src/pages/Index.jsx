@@ -1,74 +1,70 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from "axios";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa"
 import "./css/login.css"
 import GlobalContext from '../context/GlobalContext';
 
 function Index() {
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [AllEmailsPasswords, setAllEmailsPasswords] = useState([]);
-    const [allUserInfo, setAllUserInfo] = useState([]);
-    const { setCurrentUser, setUserLoggedIn } = useContext(GlobalContext);
+    const { currentUser, accountType, setCurrentUser, setUserLoggedIn, userLoggedIn, setAccountType } = useContext(GlobalContext);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
 
-    useEffect(() => {
-        const getUserData = async () => {
-            await axios.get("http://localhost:8080/user")
-                .then((res) => {
-                    const userData = res.data;
-                    const userInfo = userData.map(user => ({
-                        id: user.id,
-                        email: user.email,
-                        password: password,
+    let navigate = useNavigate();
+    let allUsers = JSON.parse(localStorage.getItem("accounts"));
+    let allUserCredentials = allUsers.map(user => ({
+        email: user.email,
+        password: user.password
+    }));
+    let userIndex = 0;
+    
+    const redirect = () => {
+        navigate("/calendar");
+    }
 
-                    }));
-                    const userCredentials = userData.map(user => ({
-                        email: user.email,
-                        password: user.password
-                    }));
-                    setAllEmailsPasswords(userCredentials);
-                    setAllUserInfo(res.data);
-                    console.log("All User Data: ", res.data);
-                    console.log("All emails and passwords: ", AllEmailsPasswords);
-                    console.log("All User Info: ", userInfo);
-                })
-                .catch((err) => console.error(err));
-        }
-        getUserData();
-    }, []);
-
-    function handleSubmit() {
+    const handleSubmit = () => {
         const user = {
-            email,
-            password
-        }
+            email: email,
+            password: password
+        };
+        console.log("User: ", user);
+        console.log("All Users: ", allUsers);
+
         let userFound = false;
-        let userIndex = 0;
-        AllEmailsPasswords.forEach(element => {
+        allUserCredentials.forEach(element => {
             if (JSON.stringify(user) === JSON.stringify(element)) {
                 userFound = true;
-                setCurrentUser(allUserInfo[userIndex]);
+                setCurrentUser(allUsers[userIndex]);
+                setAccountType(allUsers[userIndex].accountType);
             }
             userIndex += 1;
         });
+
         if (userFound) {
             setUserLoggedIn(true);
-            //TODO: Login'e istek yolla
-            console.log("User Details: ", user);
-            redirect("/calendar");
-        }
-        else {
+        } else {
             console.log("fail");
-            //TODO: Email kontrol ettir.
         }
-    }
+    };
+
+    useEffect(() => {
+        if (currentUser && userLoggedIn) {
+            console.log("Account type: ", accountType);
+            redirect();
+        }
+        console.log(currentUser, userLoggedIn, accountType);
+    }, [currentUser, userLoggedIn, accountType]);
+
+    // useEffect(() => {
+    //     if (localStorage.getItem("accounts"))
+    //         localStorage.setItem("accounts", JSON.stringify(admin));
+    // }, [admin])
 
     return (
         <div className='bodyy bg-gradient-to-r from-teal-300 to-blue-400'>
             <div className="wrapper">
-                <form action="">
+                <form>
                     <h1>Login</h1>
                     <div className="input-box">
                         <input type="email" placeholder='Email' required onChange={(e) => setEmail(e.target.value)} /><FaUser className='icon' />
