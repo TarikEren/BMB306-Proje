@@ -2,10 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import GlobalContext from "../context/GlobalContext";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
+function ButtonLink({ to, children }) {
+  return <Link to={to}><button className="text-2xl  px-11 drop-shadow-lg transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]">{children}</button></Link>;}
 
 function Account() {
-  const { userName, userPassword, userEmail, name, surname, userIsPremium,userIsAdmin,} =
+  const { userName, userPassword, userEmail, name, surname, userIsPremium,userIsAdmin,accountType,} =
     useContext(GlobalContext);
   const [password, setPassword] = useState(null);
   const [email, setEmail] = useState(null);
@@ -156,22 +159,26 @@ function Account() {
               </button>
             </div>
           </div>
+          <br></br>
+          {(!userIsPremium&&!userIsAdmin)&& <p className="font-mono pl-4 inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight mt-2">Free User</p>}
+          {userIsAdmin && <p className="font-mono pl-4 inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight mt-2">Admin</p> }
+          {(userIsPremium&&!userIsAdmin)&&<p className="font-mono pl-4 inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight mt-2">Vip</p> }
+          {//<p className="text-transform: capitalize text-2xl mx-3 font-bold font-medium inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight">{accountType ? accountType : "Sa"} </p>
+          }<br></br>
           <div className=" m-4 text-xl">
             {" "}
             {/* <p className="mb-3">Premium admin veya free user bilgisi</p> */}
-            {(!userIsPremium&&!userIsAdmin)&& <a
-              className="text-2xl px-11 drop-shadow-lg transition ease-in-out delay-150 bg-blue-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]"
-              href="/Plans"
+            {(!userIsPremium&&!userIsAdmin)&& <ButtonLink
+              to="/Plans"
             >
               Vip ol
-            </a>}
+            </ButtonLink>}
             
-            {userIsAdmin && <a
-              className="mx-3 px-11 drop-shadow-lg transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]"
-              href="/Admin"
+            {userIsAdmin && <ButtonLink
+              to="/Admin"
             >
               Admin Paneli
-            </a>}
+            </ButtonLink>}
 
 
 
