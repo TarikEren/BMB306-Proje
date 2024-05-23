@@ -6,7 +6,7 @@ import GlobalContext from '../context/GlobalContext';
 
 function Index() {
 
-    const { currentUser, accountType, setCurrentUser, setUserLoggedIn, userLoggedIn, setAccountType, setUserEmail, setUserPassword, setUserName, setName, setSurname } = useContext(GlobalContext);
+    const { currentUser, accountType, setCurrentUser, setUserLoggedIn, userLoggedIn, setAccountType, setUserEmail, setUserPassword, setUserName, setName, setSurname, dispatchCalEvent } = useContext(GlobalContext);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
 
@@ -17,6 +17,8 @@ function Index() {
         password: user.password
     }));
     let userIndex = 0;
+
+    localStorage.setItem("savedEvents", []);
 
     const handleSubmit = () => {
         const user = {
@@ -43,6 +45,7 @@ function Index() {
         if (userFound) {
             setUserLoggedIn(true);
             setUserEmail(email);
+            dispatchCalEvent({type: "clean", payload: null});
         } else {
             console.log("fail");
         }
