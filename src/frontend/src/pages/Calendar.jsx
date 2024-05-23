@@ -8,19 +8,18 @@ import EventModal from "../components/EventModal";
 
 function Calendar() {
     const [currentMonth, setCurrentMonth] = useState(getMonth());
-    const {monthIndex, showEventModal, accountType} = useContext(GlobalContext);
-    
+    const { monthIndex, showEventModal, currentUser } = useContext(GlobalContext);
+
     useEffect(() => {
         setCurrentMonth(getMonth(monthIndex));
-        console.log("Account Type: ", accountType);
-    }, [monthIndex, accountType]);
+    }, [monthIndex]);
 
 
     return (
         <React.Fragment>
             {showEventModal && <EventModal />}
             <div className="h-screen flex flex-col">
-                <CalendarHeader/>
+                <CalendarHeader />
                 <div className="flex flex-1">
                     <Sidebar />
                     <Month month={currentMonth} />
