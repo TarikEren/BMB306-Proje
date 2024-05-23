@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../context/GlobalContext";
 import { FaRegTrashCan, FaCheck, FaRegClock, FaRegClipboard } from "react-icons/fa6";
 import { FaBookmark } from "react-icons/fa";
@@ -13,7 +13,15 @@ const labelsClasses = [
   "purple",
 ];
 
+
 export default function EventModal() {
+
+  let eventCountStr = localStorage.getItem("eventCount");
+  let eventCount = parseInt(eventCountStr);
+  let accountType = localStorage.getItem("accountType").replace(/['"]+/g, '');
+  useEffect(() => {
+    console.log(eventCount);
+  }, [eventCount])
   const {
     setShowEventModal,
     daySelected,
@@ -33,22 +41,31 @@ export default function EventModal() {
       : labelsClasses[0]
   );
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const calendarEvent = {
-      title,
-      description,
-      label: selectedLabel,
-      day: daySelected.valueOf(),
-      id: selectedEvent ? selectedEvent.id : Date.now(),
-    };
-    if (selectedEvent) {
-      dispatchCalEvent({ type: "update", payload: calendarEvent });
-    } else {
-      dispatchCalEvent({ type: "push", payload: calendarEvent });
-    }
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log("Event count: ", eventCount);
+    console.log("Account type: ", accountType);
+    console.log("Types are equal: ", typeof accountType === typeof "free");
+    console.log(localStorage.getItem("accountType").trim() === "free");
+      if (eventCount >= 5 && accountType.localeCompare("free") === 0) {
+        alert("Randevu hakkınızı doldurdunuz, premium satın almanız lazım.");
+        return "fail";
+      }
+      const calendarEvent = {
+        title,
+        description,
+        label: selectedLabel,
+        day: daySelected.valueOf(),
+        id: selectedEvent ? selectedEvent.id : Date.now(),
+      };
+      if (selectedEvent) {
+        dispatchCalEvent({ type: "update", payload: calendarEvent });
+      } else {
+        dispatchCalEvent({ type: "push", payload: calendarEvent });
+      }
 
-    setShowEventModal(false);
+      setShowEventModal(false);
+      return "success";
   }
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
@@ -79,7 +96,7 @@ export default function EventModal() {
             </span>
             <p>{daySelected.format("dddd, MMMM DD")}</p>
             <span className="material-icons-outlined text-gray-600 text-xl">
-              <FaRegClipboard/>
+              <FaRegClipboard />
             </span>
             <input
               type="text"
