@@ -8,7 +8,7 @@ import EventModal from "../components/EventModal";
 
 function Calendar() {
     const [currentMonth, setCurrentMonth] = useState(getMonth());
-    const { monthIndex, showEventModal, currentUser } = useContext(GlobalContext);
+    const { monthIndex, showEventModal } = useContext(GlobalContext);
 
     useEffect(() => {
         setCurrentMonth(getMonth(monthIndex));
