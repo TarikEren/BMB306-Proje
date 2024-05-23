@@ -46,13 +46,13 @@ export default function ContextWrapper(props) {
   const [userIsPremium, setUserIsPremium] = useState(false);
   const [cardNumber, setCardNumber] = useState(null);
   const [cvc, setCvc] = useState(null);
-  const [userName, setUserName] = useState(null);
-  const [userPassword, setUserPassword] = useState(null);
-  const [userEmail, setUserEmail] = useState(null);
-  const [accountType, setAccountType] = useState(null);
+  const [userName, setUserName] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [accountType, setAccountType] = useState("");
   const [price, setPrice] = useState(null);
-  const [name, setName] = useState(null);
-  const [surname, setSurname] = useState(null);
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
   const [userIsAdmin, setUserIsAdmin] = useState(false);
   const [currentUser, setCurrentUser] = useState([]);
   const [allUsers, setAllUsers] = useState([
@@ -62,25 +62,30 @@ export default function ContextWrapper(props) {
       password: "admin",
       name: "",
       surname: "",
-      accountType: "admin"
+      accountType: "admin",
+      events: []
     },
     {
       email: "normal@kullanici.com",
       username: "normal",
       password: "123",
       name: "normal",
-      surname: "normal",
-      accountType: "free"
+      surname: "kullanici",
+      accountType: "free",
+      events: []
     },
     {
       email: "vip@kullanici.com",
       username: "vip",
       password: "123",
-      name: "normal",
-      surname: "normal",
-      accountType: "premium"
+      name: "vip",
+      surname: "kullanici",
+      accountType: "premium",
+      events: []
     },
   ]);
+
+  let refreshDatabase = false;
 
   const filteredEvents = useMemo(() => {
     return savedEvents.filter((evt) =>
@@ -91,13 +96,49 @@ export default function ContextWrapper(props) {
     );
   }, [savedEvents, labels]);
 
+
+  //Database
   useEffect(() => {
     localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
   }, [savedEvents]);
 
+
   useEffect(() => {
+    if (allUsers.length > 3) 
     localStorage.setItem("accounts", JSON.stringify(allUsers));
   }, [allUsers]);
+
+  useEffect(() => {
+    if (userEmail)
+      localStorage.setItem("currentEmail", JSON.stringify(userEmail));
+  }, [userEmail]);
+
+  useEffect(() => {
+    if (userName)
+      localStorage.setItem("currentUsername", JSON.stringify(userName));
+  }, [userName]);
+
+  useEffect(() => {
+    if (userPassword)
+      localStorage.setItem("currentPassword", JSON.stringify(userPassword));
+  }, [userPassword]);
+
+  useEffect(() => {
+    if (accountType)
+      localStorage.setItem("accountType", JSON.stringify(accountType));
+  }, [accountType]);
+
+  useEffect(() => {
+    if (name)
+      localStorage.setItem("name", JSON.stringify(name));
+  }, [name]);
+
+  useEffect(() => {
+    if (surname)
+      localStorage.setItem("surname", JSON.stringify(surname));
+  }, [surname]);
+
+
 
   useEffect(() => {
     setLabels((prevLabels) => {
@@ -169,12 +210,16 @@ export default function ContextWrapper(props) {
         setUserName,
         userPassword,
         setUserPassword,
+        userEmail,
+        setUserEmail,
         accountType,
         setAccountType,
         price,
         setPrice,
         name,
+        setName,
         surname,
+        setSurname,
         userIsAdmin,
         setUserIsAdmin,
         currentUser,
