@@ -55,6 +55,8 @@ function Admin() {
     const handleDelete = (email) => {
         let newAllUsers = allUsers.filter((item) => { return item.email !== email });
         localStorage.setItem("accounts", JSON.stringify(newAllUsers));
+        alert("Kullanıcı silindi");
+        window.location.reload();
         console.log(newAllUsers);
     };
 
