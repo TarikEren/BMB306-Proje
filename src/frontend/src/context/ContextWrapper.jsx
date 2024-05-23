@@ -17,6 +17,8 @@ function savedEventsReducer(state, { type, payload }) {
       );
     case "delete":
       return state.filter((evt) => evt.id !== payload.id);
+    case "clean":
+      return state.filter((evt) => evt.id === -31);
     default:
       throw new Error();
   }
@@ -104,8 +106,8 @@ export default function ContextWrapper(props) {
 
 
   useEffect(() => {
-    if (allUsers.length > 3) 
-    localStorage.setItem("accounts", JSON.stringify(allUsers));
+    if (allUsers.length > 3)
+      localStorage.setItem("accounts", JSON.stringify(allUsers));
   }, [allUsers]);
 
   useEffect(() => {
@@ -138,6 +140,14 @@ export default function ContextWrapper(props) {
       localStorage.setItem("surname", JSON.stringify(surname));
   }, [surname]);
 
+  useEffect(() => {
+    if (currentUser)
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  }, [currentUser]);
+
+  useEffect(() => {
+      localStorage.setItem("eventCount", savedEvents.length);
+  }, [savedEvents]);
 
 
   useEffect(() => {
