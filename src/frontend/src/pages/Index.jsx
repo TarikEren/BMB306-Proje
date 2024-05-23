@@ -6,7 +6,7 @@ import GlobalContext from '../context/GlobalContext';
 
 function Index() {
 
-    const { currentUser, accountType, setCurrentUser, setUserLoggedIn, userLoggedIn, setAccountType } = useContext(GlobalContext);
+    const { currentUser, accountType, setCurrentUser, setUserLoggedIn, userLoggedIn, setAccountType, setUserEmail, setUserPassword, setUserName, setName, setSurname } = useContext(GlobalContext);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
 
@@ -32,27 +32,28 @@ function Index() {
                 userFound = true;
                 setCurrentUser(allUsers[userIndex]);
                 setAccountType(allUsers[userIndex].accountType);
+                setUserName(allUsers[userIndex].username);
+                setUserPassword(allUsers[userIndex].password);
+                setName(allUsers[userIndex].name);
+                setSurname(allUsers[userIndex].surname);
             }
             userIndex += 1;
         });
 
         if (userFound) {
             setUserLoggedIn(true);
+            setUserEmail(email);
         } else {
             console.log("fail");
         }
     };
 
     useEffect(() => {
-        if (currentUser && userLoggedIn) {
+        if (email && currentUser && userLoggedIn && accountType) {
             navigate("/calendar");
+            console.log("Current user: ", currentUser);
         }
-    }, [currentUser, userLoggedIn, accountType]);
-
-    // useEffect(() => {
-    //     if (localStorage.getItem("accounts"))
-    //         localStorage.setItem("accounts", JSON.stringify(admin));
-    // }, [admin])
+    }, [email, currentUser, userLoggedIn, accountType]);
 
     return (
         <div className='bodyy bg-gradient-to-r from-teal-300 to-blue-400'>
