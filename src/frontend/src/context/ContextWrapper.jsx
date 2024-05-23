@@ -62,17 +62,17 @@ export default function ContextWrapper(props) {
       email: "admin@admin.com",
       username: "admin",
       password: "admin",
-      name: "",
-      surname: "",
+      name: "admin",
+      surname: "admin",
       accountType: "admin",
       events: []
     },
     {
-      email: "normal@kullanici.com",
-      username: "normal",
-      password: "123",
-      name: "normal",
-      surname: "kullanici",
+      email: "mali@mali.com",
+      username: "mali",
+      password: "mali",
+      name: "mali",
+      surname: "mali",
       accountType: "free",
       events: []
     },
@@ -106,7 +106,7 @@ export default function ContextWrapper(props) {
 
 
   useEffect(() => {
-    if (allUsers.length > 3)
+    // if (allUsers.length > 3)
       localStorage.setItem("accounts", JSON.stringify(allUsers));
   }, [allUsers]);
 
