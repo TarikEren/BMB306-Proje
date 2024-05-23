@@ -5,11 +5,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function ButtonLink({ to, children }) {
-  return <Link to={to}><button className="text-2xl  px-11 drop-shadow-lg transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]">{children}</button></Link>;}
+  return <Link to={to}><button className="text-2xl  px-11 drop-shadow-lg transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-[#fef2f2]">{children}</button></Link>;
+}
 
 function Account() {
-  const { userName, userPassword, userEmail, name, surname, userIsPremium,userIsAdmin,accountType,} =
-    useContext(GlobalContext);
+  // const { userName, userPassword, userEmail, name, surname, userIsPremium, userIsAdmin, accountType, } =
+  //   useContext(GlobalContext);
   const [password, setPassword] = useState(null);
   const [email, setEmail] = useState(null);
   const [ad, setName] = useState(null);
@@ -18,12 +19,19 @@ function Account() {
   const [oldPassword, setOldPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
 
+  let currentPassword = localStorage.getItem("currentPassword").replace(/['"]+/g, '');
+  let currentUsername = localStorage.getItem("currentUsername").replace(/['"]+/g, '');
+  let currentEmail = localStorage.getItem("currentEmail").replace(/['"]+/g, '');
+  let accountType = localStorage.getItem("accountType").replace(/['"]+/g, '');
+  let currentName = localStorage.getItem("name") ? localStorage.getItem("name").replace(/['"]+/g, '') : " ";
+  let currentSurname = localStorage.getItem("surname") ? localStorage.getItem("surname").replace(/['"]+/g, '') : " ";
+
 
   function passwordTest() {
     if (
       password === confirmPassword &&
       password.length >= 8 &&
-      oldPassword === userPassword
+      oldPassword === currentPassword
     ) {
       console.log("kabul edildi");
     } else console.log("red edildi");
@@ -31,22 +39,18 @@ function Account() {
   async function dataGonder() {
     if (!passwordTest) return null;
     const user = {
-      username: username ? username : userName,
-      password: password ? password : userPassword,
-      email: email ? email : userEmail,
-      name: ad ? ad : name,
-      surname: soyAd ? soyAd : surname,
+      username: username ? username : currentUsername,
+      password: password ? password : currentPassword,
+      email: email ? email : currentEmail,
+      name: ad ? ad : currentName,
+      surname: soyAd ? soyAd : currentSurname,
     }
-    await axios.post("http://localhost:8080/user", user)
-    .then((res) => {
-      console.log(res.status); //Kontrol için
-    })
-    .catch((err) => console.error(err));
+    // await axios.post("http://localhost:8080/user", user)
+    // .then((res) => {
+    //   console.log(res.status); //Kontrol için
+    // })
+    // .catch((err) => console.error(err));
   }
-
-  // useEffect(() => {
-  //   dataGonder();
-  // }, [])
 
   return (
     <>
@@ -71,20 +75,20 @@ function Account() {
                 <input
                   className="flex flex-col lg:flex-row opacity-75 rounded w-9/12 p-3 shadow-inner"
                   type="text"
-                  value={userName && userName}
+                  // value={userName && userName}
                   placeholder="Kullanıcı Adı"
                   required
                   name="username"
-                  onChange={(e) => setUsername(e.target.value)} 
-              
-                /> 
+                  onChange={(e) => setUsername(e.target.value)}
+                  value={currentUsername}
+                />
 
               </div>
               <div className="flex flex-col lg:flex-row drop-shadow-lg m-3 text-lg py-3">
                 <input
                   className="flex flex-col lg:flex-row opacity-75 rounded w-9/12 p-3 shadow-inner"
                   type="email"
-                  value={email ? email : " "}
+                  value={email ? email : currentEmail}
                   placeholder="E-mail"
                   required
                   name="Email"
@@ -95,7 +99,7 @@ function Account() {
                 <input
                   className="flex flex-col lg:flex-row opacity-75 rounded w-4/12 p-3 shadow-inner"
                   type="text"
-                  value={ad ? ad : " "}
+                  value={ad ? ad : currentName}
                   placeholder="İsim"
                   required
                   name="Ad"
@@ -104,7 +108,7 @@ function Account() {
                 <input
                   className="flex flex-col lg:flex-row opacity-75 rounded w-4/12 p-3 shadow-inner"
                   type="text"
-                  value={soyAd ? soyAd : " "}
+                  value={soyAd ? soyAd : currentSurname}
                   placeholder="Soyisim"
                   required
                   name="Soyad"
@@ -160,22 +164,20 @@ function Account() {
             </div>
           </div>
           <br></br>
-          {(!userIsPremium&&!userIsAdmin)&& <p className="font-mono pl-4 inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight mt-2">Free User</p>}
-          {userIsAdmin && <p className="font-mono pl-4 inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight mt-2">Admin</p> }
-          {(userIsPremium&&!userIsAdmin)&&<p className="font-mono pl-4 inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight mt-2">Vip</p> }
-          {//<p className="text-transform: capitalize text-2xl mx-3 font-bold font-medium inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight">{accountType ? accountType : "Sa"} </p>
-          }<br></br>
-          <div className=" m-4 text-xl">
-            {" "}
+          {accountType === "free" && <p className="font-mono pl-4 inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight mt-2">Free User</p>}
+          {accountType === "admin" && <p className="font-mono pl-4 inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight mt-2">Admin</p>}
+          {accountType === "premium" && <p className="font-mono pl-4 inline-block text-2xl sm:text-3xl  text-slate-900 tracking-tight mt-2">Vip</p>}
+          <br></br>
+          <div className=" m-4 text-xl">            
             {/* <p className="mb-3">Premium admin veya free user bilgisi</p> */}
-            {(!userIsPremium&&!userIsAdmin)&& <ButtonLink
-              to="/Plans"
+            {accountType === "free" && <ButtonLink
+              to="/plans"
             >
               Vip ol
             </ButtonLink>}
-            
-            {userIsAdmin && <ButtonLink
-              to="/Admin"
+
+            {accountType === "admin" && <ButtonLink
+              to="/admin"
             >
               Admin Paneli
             </ButtonLink>}
