@@ -54,7 +54,7 @@ function Admin() {
 
     const handleDelete = (email) => {
         let newAllUsers = allUsers.filter((item) => { return item.email !== email });
-        localStorage.setItem("accounts", newAllUsers);
+        localStorage.setItem("accounts", JSON.stringify(newAllUsers));
         console.log(newAllUsers);
     };
 
