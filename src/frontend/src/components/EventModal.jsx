@@ -43,10 +43,6 @@ export default function EventModal() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("Event count: ", eventCount);
-    console.log("Account type: ", accountType);
-    console.log("Types are equal: ", typeof accountType === typeof "free");
-    console.log(localStorage.getItem("accountType").trim() === "free");
       if (eventCount >= 5 && accountType.localeCompare("free") === 0) {
         alert("Randevu hakkınızı doldurdunuz, premium satın almanız lazım.");
         return "fail";
