@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import { FaArrowCircleRight } from "react-icons/fa";
@@ -15,6 +15,7 @@ function Payment() {
     const { price, setUserIsPremium } = useContext(GlobalContext);
     const kdv = price - (price / 1.18);
     let navigate = useNavigate();
+    let allUsers = JSON.parse(localStorage.getItem("accounts"));
 
     const checkValidOwner = () => {
         const ownerBox = document.getElementById("card-owner");
@@ -45,10 +46,26 @@ function Payment() {
         }
         return false;
     }
+    function findUser(email) {
+        return allUsers.find(user => user.email === email);
+    }
     function sendPayment() {
         if (checkValidity()) {
-            //Sorun yoksa kullanıcıyı premium yap
-            setUserIsPremium(true);
+            //Arrayden şu anki kullanıcıyı çek.
+            //accountType değerini premium yap
+            //localstorage'deki accountType değerini premium yap.
+            //Diğer kullanıcıları ayrı bir arraye koy.
+            //Değiştirilen kullanıcı objesini diğer kullanıcılar arrayiyle birleştir.
+
+            //Bir nedenden dolayı veritabanında sadece "4" oluyor.
+            const currentEmail = localStorage.getItem("currentEmail");
+            let others = allUsers.filter((item) => { return item.email !== currentEmail });
+            const newCurrentUser = JSON.parse(localStorage.getItem("currentUser"));
+            console.log("NewCurrentUser:", newCurrentUser);
+            newCurrentUser.accountType = "premium";
+            localStorage.setItem("accountType", "premium"); 
+            let newAllUsers = others.push(newCurrentUser);
+            // localStorage.setItem("accounts", JSON.stringify(newAllUsers));
             navigate("/calendar");
             return true;
         }
