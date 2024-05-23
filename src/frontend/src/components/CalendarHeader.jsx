@@ -5,14 +5,19 @@ import GlobalContext from "../context/GlobalContext";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 export default function CalendarHeader() {
-  const { monthIndex, setMonthIndex, accountType }
-  = useContext(GlobalContext);
+  let accountType = localStorage.getItem("accountType").replace(/['"]+/g, '');
+
+  const { monthIndex, setMonthIndex }
+    = useContext(GlobalContext);
+
   function handlePrevMonth() {
     setMonthIndex(monthIndex - 1);
   }
+
   function handleNextMonth() {
     setMonthIndex(monthIndex + 1);
   }
+
   function handleReset() {
     setMonthIndex(
       monthIndex === dayjs().month()
@@ -20,11 +25,12 @@ export default function CalendarHeader() {
         : dayjs().month()
     );
   }
+
   return (
     <header className="px-4 py-2 bg-gradient-to-r from-teal-300 to-blue-400 flex items-center text-white justify-between">
       <div className="flex flex-row items-center">
         <img src={logo} alt="calendar" className="mr-2 w-12 h-12" />
-        <a href="/" className="mr-10 text-xl text-white fond-bold">
+        <a href="/calendar" className="mr-10 text-xl text-white fond-bold">
           Calendar
         </a>
         <button
